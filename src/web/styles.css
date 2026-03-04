@@ -43,6 +43,7 @@ body {
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   font-weight: 800;
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
 }
 
 input,
@@ -56,10 +57,30 @@ svg text {
   font-weight: 800;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+label,
+strong,
+button,
 th,
 td {
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+th,
+td {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
 }
 
 .page-shell {
@@ -127,7 +148,7 @@ td {
 
 .hero__metrics {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 14px;
   align-content: start;
 }
@@ -172,7 +193,7 @@ td {
 
 .control-group {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
 
@@ -182,15 +203,15 @@ td {
 }
 
 .control-group--two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .control-group--four {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .control-group--three {
-  grid-template-columns: 1.5fr 1.4fr 0.6fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .control-group label {
@@ -247,7 +268,7 @@ td {
 
 .mode-chip-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 12px;
 }
 
@@ -323,11 +344,11 @@ td {
 }
 
 .section-grid--two {
-  grid-template-columns: 0.88fr 1.12fr;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
 }
 
 .section-grid--three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .comparison-shell,
@@ -348,7 +369,7 @@ td {
 .comparison-shell__header h3 {
   margin: 0 0 6px;
   font-size: 1.5rem;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .comparison-shell__header p {
@@ -356,7 +377,7 @@ td {
   color: var(--muted);
   font-size: 1.12rem;
   line-height: 1.5;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .comparison-matrices {
@@ -386,14 +407,14 @@ td {
 .chart-card__header h3 {
   margin: 0 0 4px;
   font-size: clamp(1.56rem, 1.7vw, 1.92rem);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .chart-card__header p {
   margin: 0;
   font-size: 1.16rem;
   line-height: 1.55;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .action-button {
@@ -564,15 +585,15 @@ td {
 .matrix-cell__name {
   font-size: clamp(1.16rem, 1.2vw, 1.34rem);
   line-height: 1.3;
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
 .matrix-cell__system {
   font-size: clamp(1rem, 1vw, 1.08rem);
   line-height: 1.48;
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
 .quersum-triangle {
@@ -656,7 +677,7 @@ td {
 }
 
 .energogram-chart--book {
-  min-width: 1080px;
+  min-width: 1240px;
 }
 
 .energogram-chart__zone--negative {
@@ -752,7 +773,7 @@ td {
 .energogram-chart__zone-caption,
 .energogram-chart__axis-caption {
   fill: rgba(57, 50, 44, 0.74);
-  font-size: 16px;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -765,20 +786,21 @@ td {
 
 .energogram-chart__body-label {
   fill: rgba(57, 50, 44, 0.96);
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .energogram-chart__body-subtitle {
   fill: rgba(57, 50, 44, 0.76);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .table-shell {
   overflow: auto;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(63, 43, 25, 0.08);
+  scrollbar-gutter: stable both-edges;
 }
 
 .table-shell table,
@@ -789,35 +811,35 @@ td {
 .heat-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 1100px;
+  min-width: 1380px;
   background: rgba(255, 255, 255, 0.62);
 }
 
 .influence-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 920px;
+  min-width: 1180px;
   background: rgba(255, 255, 255, 0.62);
 }
 
 .interzone-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 980px;
   background: rgba(255, 255, 255, 0.62);
 }
 
 .quick-roll-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 1080px;
   background: rgba(255, 255, 255, 0.68);
 }
 
 .quick-roll-derive-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 1180px;
   background: rgba(255, 255, 255, 0.7);
 }
 
@@ -831,42 +853,42 @@ td {
 .inserted-block-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 720px;
+  min-width: 980px;
   background: rgba(255, 255, 255, 0.68);
 }
 
 .somatic-primer-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 980px;
+  min-width: 1240px;
   background: rgba(255, 255, 255, 0.68);
 }
 
 .slice-diagram-book__table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 700px;
+  min-width: 920px;
   background: rgba(255, 255, 255, 0.72);
 }
 
 .honeycomb-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 980px;
   background: rgba(255, 255, 255, 0.62);
 }
 
 .biorhythm-build-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 1040px;
   background: rgba(255, 255, 255, 0.62);
 }
 
 .lifetime-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 1120px;
   background: rgba(255, 255, 255, 0.62);
 }
 
@@ -897,6 +919,7 @@ td {
   border: 1px solid rgba(63, 43, 25, 0.08);
   padding: 12px 10px;
   text-align: center;
+  vertical-align: top;
 }
 
 .heat-table thead th {
@@ -985,6 +1008,62 @@ td {
   text-align: left;
 }
 
+.heat-table th,
+.heat-table td,
+.interzone-table th,
+.interzone-table td,
+.quick-roll-table th,
+.quick-roll-table td,
+.quick-roll-derive-table th,
+.quick-roll-derive-table td,
+.root-repeat-table th,
+.root-repeat-table td,
+.inserted-block-table th,
+.inserted-block-table td,
+.somatic-primer-table th,
+.somatic-primer-table td,
+.slice-diagram-book__table th,
+.slice-diagram-book__table td,
+.honeycomb-table th,
+.honeycomb-table td,
+.biorhythm-build-table th,
+.biorhythm-build-table td,
+.lifetime-table th,
+.lifetime-table td,
+.influence-table th,
+.influence-table td,
+.sleep-cycle-table th,
+.sleep-cycle-table td,
+.disease-book-table th,
+.disease-book-table td,
+.disease-honeycomb-table th,
+.disease-honeycomb-table td {
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.quick-roll-table th:first-child,
+.quick-roll-derive-table th:first-child,
+.root-repeat-table th:first-child,
+.inserted-block-table th:first-child,
+.somatic-primer-table th:first-child,
+.slice-diagram-book__table th:first-child,
+.honeycomb-table th:first-child,
+.biorhythm-build-table th:first-child,
+.lifetime-table th:first-child,
+.sleep-cycle-table th:first-child,
+.influence-table th:first-child,
+.disease-honeycomb-table th:first-child {
+  min-width: 180px;
+}
+
+.heat-table th:first-child,
+.heat-table td:first-child {
+  min-width: 120px;
+}
+
 .influence-table__house-id {
   display: inline-block;
   margin-right: 8px;
@@ -1025,6 +1104,7 @@ td {
 .inserted-block-table__cell {
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 1.02rem;
+  min-width: 84px;
 }
 
 .inserted-block-table__cell--root {
@@ -1053,7 +1133,7 @@ td {
 }
 
 .quick-roll-derive-table__cell {
-  min-width: 88px;
+  min-width: 118px;
 }
 
 .quick-roll-derive-table__cell--highlighted {
@@ -1076,7 +1156,7 @@ td {
 }
 
 .somatic-primer-table__cell {
-  min-width: 100px;
+  min-width: 132px;
   vertical-align: top;
 }
 
@@ -1091,7 +1171,7 @@ td {
 
 .slice-diagram-atlas {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 18px;
 }
 
@@ -1137,7 +1217,7 @@ td {
   width: 100%;
   height: auto;
   display: block;
-  min-width: 1320px;
+  min-width: 1760px;
 }
 
 .somatic-standard-graph__grid,
@@ -1184,21 +1264,21 @@ td {
 .somatic-standard-graph__point-label,
 .somatic-standard-graph__caption {
   fill: var(--muted);
-  font-size: 15px;
+  font-size: 18px;
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 .somatic-standard-graph__life-label,
 .somatic-standard-graph__health-label {
   fill: rgba(63, 43, 25, 0.78);
-  font-size: 17px;
+  font-size: 22px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .somatic-standard-graph__health-label {
   fill: rgba(63, 43, 25, 0.46);
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .somatic-standard-graph__band {
@@ -1217,14 +1297,14 @@ td {
 .somatic-standard-graph__band-title,
 .somatic-standard-graph__band-description {
   fill: rgba(63, 43, 25, 0.84);
-  font-size: 15px;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .somatic-standard-graph__band-description {
   fill: rgba(63, 43, 25, 0.56);
-  font-size: 13px;
+  font-size: 16px;
   text-transform: none;
   letter-spacing: 0;
 }
@@ -1486,7 +1566,7 @@ td {
 .delta-chart__label,
 .delta-chart__value {
   fill: var(--muted);
-  font-size: 16px;
+  font-size: 18px;
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
@@ -1509,6 +1589,7 @@ td {
   width: 100%;
   height: auto;
   display: block;
+  min-width: 1080px;
 }
 
 .delta-chart__axis,
@@ -1695,7 +1776,7 @@ td {
 
 .interzone-book-plate__interpretation {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 12px;
 }
 
@@ -2351,6 +2432,7 @@ td {
   width: 100%;
   height: auto;
   display: block;
+  min-width: 620px;
 }
 
 .somatic-wheel__guide,
@@ -2385,14 +2467,14 @@ td {
 .somatic-wheel__digit,
 .somatic-wheel__center-digit {
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
 }
 
 .somatic-wheel__center-kicker,
 .somatic-wheel__center-age,
 .somatic-wheel__label {
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .somatic-wheel__center-digit {
@@ -2401,7 +2483,7 @@ td {
 
 .hour-zone-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 10px;
   margin-top: 16px;
 }
@@ -2456,11 +2538,11 @@ td {
 }
 
 .sota-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .note-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .note-grid--single-column {
@@ -2663,7 +2745,7 @@ td {
 
 .disease-book-table {
   width: 100%;
-  min-width: 820px;
+  min-width: 1160px;
   border-collapse: collapse;
   background: rgba(255, 255, 255, 0.84);
 }
@@ -2680,7 +2762,7 @@ td {
 }
 
 .disease-book-table tbody th {
-  min-width: 138px;
+  min-width: 188px;
   background: rgba(250, 244, 235, 0.92);
 }
 
@@ -2695,7 +2777,7 @@ td {
 
 .disease-book-table__age-cell,
 .disease-book-table__digit-cell {
-  min-width: 54px;
+  min-width: 68px;
 }
 
 .disease-book-table__age-cell--confirmed {
@@ -2736,7 +2818,7 @@ td {
 .disease-honeycomb-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 860px;
+  min-width: 1100px;
   background: rgba(255, 255, 255, 0.68);
 }
 
@@ -2769,14 +2851,14 @@ td {
 
 .disease-honeycomb-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
   gap: 14px;
   margin-top: 18px;
 }
 
 .disease-focus-board {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
   margin-top: 18px;
 }
@@ -3249,7 +3331,7 @@ td {
 
 .sota-reference-chip-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
 }
 
@@ -3266,12 +3348,12 @@ td {
 
 .sota-reference-chip span {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 1rem;
 }
 
 .sota-reference-chip strong {
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 1.16rem;
+  line-height: 1.5;
 }
 
 .sota-reference-chip--active,
@@ -3329,7 +3411,7 @@ td {
 
 .honeycomb-periods {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
 }
 
@@ -3390,11 +3472,11 @@ td {
 }
 
 .coverage-board__modules {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .coverage-board__gaps {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   margin-top: 14px;
 }
 
@@ -3481,7 +3563,7 @@ td {
 
 .arcana-atlas__controls {
   display: grid;
-  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 14px;
 }
 
@@ -3536,29 +3618,32 @@ td {
 }
 
 .arcana-chip-grid {
-  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .arcana-chip {
   width: 100%;
   display: grid;
-  gap: 4px;
-  padding: 12px;
+  gap: 8px;
+  padding: 16px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(63, 43, 25, 0.08);
   background: rgba(255, 255, 255, 0.58);
   text-align: left;
   cursor: pointer;
+  align-content: start;
+  min-height: 160px;
 }
 
 .arcana-chip span {
   color: var(--muted);
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 .arcana-chip strong {
-  font-size: 0.9rem;
+  font-size: 1.32rem;
+  line-height: 1.35;
 }
 
 .arcana-chip--active {
@@ -3573,7 +3658,7 @@ td {
 }
 
 .arcana-search-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .arcana-search-card {
@@ -3771,7 +3856,7 @@ td {
 .sleep-need-chart {
   min-height: 420px;
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   align-items: end;
 }
@@ -3835,7 +3920,7 @@ td {
 .sleep-cycle-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 760px;
+  min-width: 980px;
   background: rgba(255, 255, 255, 0.62);
 }
 
@@ -3862,7 +3947,7 @@ td {
 
 .reference-columns {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 14px;
 }
 

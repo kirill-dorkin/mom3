@@ -5,6 +5,34 @@ interface SomaticWheelProps {
   snapshot: SomaticAgeSnapshot;
 }
 
+function splitIntoLines(text: string, maxLineLength: number): string[] {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+
+  if (words.length === 0) {
+    return [];
+  }
+
+  const lines: string[] = [];
+  let currentLine = "";
+
+  for (const word of words) {
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (currentLine && candidate.length > maxLineLength) {
+      lines.push(currentLine);
+      currentLine = word;
+      continue;
+    }
+
+    currentLine = candidate;
+  }
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  return lines;
+}
+
 function polarToCartesian(center: number, radius: number, angle: number): { x: number; y: number } {
   return {
     x: center + Math.cos(angle) * radius,
@@ -33,31 +61,35 @@ function getValueClass(digit: number): "positive" | "negative" {
 }
 
 export function SomaticWheel({ snapshot }: SomaticWheelProps) {
-  const size = 430;
+  const size = 640;
   const center = size / 2;
-  const ringInnerRadius = 94;
-  const ringOuterRadius = 176;
+  const ringInnerRadius = 126;
+  const ringOuterRadius = 230;
   const baseSeries = knowledgeBase.somaticSeries.find((series) => series.id === 0);
   const ringSeries = knowledgeBase.somaticSeries.filter((series) => series.id !== 0);
   const angleStep = (Math.PI * 2) / ringSeries.length;
+  const centerLines = baseSeries ? splitIntoLines(baseSeries.sphereName, 12) : [];
+  const centerLabelY = center - 42 - ((centerLines.length - 1) * 10);
 
   return (
-    <div className="chart-card">
+    <div className="chart-card chart-card--wide">
       <div className="chart-card__header">
         <h3>Круговая соматическая схема</h3>
         <p>Возрастной срез по 9 внешним секторам и центральной зоне подключения.</p>
       </div>
       <svg className="somatic-wheel" viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`Соматическая схема на возраст ${snapshot.age}`}>
-        <circle className="somatic-wheel__guide" cx={center} cy={center} r={ringOuterRadius + 14} />
-        <circle className="somatic-wheel__guide" cx={center} cy={center} r={ringInnerRadius - 24} />
+        <circle className="somatic-wheel__guide" cx={center} cy={center} r={ringOuterRadius + 18} />
+        <circle className="somatic-wheel__guide" cx={center} cy={center} r={ringInnerRadius - 30} />
         {ringSeries.map((series, index) => {
           const startAngle = (-Math.PI / 2) + index * angleStep;
           const endAngle = startAngle + angleStep;
           const midAngle = startAngle + angleStep / 2;
           const value = snapshot.values[series.id];
           const fillRadius = ringInnerRadius + ((value.digit + 1) / 10) * (ringOuterRadius - ringInnerRadius);
-          const labelPosition = polarToCartesian(center, ringOuterRadius + 28, midAngle);
+          const labelPosition = polarToCartesian(center, ringOuterRadius + 46, midAngle);
           const digitPosition = polarToCartesian(center, ringInnerRadius + (fillRadius - ringInnerRadius) / 2, midAngle);
+          const labelLines = splitIntoLines(series.sphereName, 14);
+          const labelStartY = labelPosition.y - ((labelLines.length - 1) * 10);
 
           return (
             <g key={series.id}>
@@ -70,8 +102,12 @@ export function SomaticWheel({ snapshot }: SomaticWheelProps) {
               <text className="somatic-wheel__digit" x={digitPosition.x} y={digitPosition.y + 4} textAnchor="middle">
                 {value.digit}
               </text>
-              <text className="somatic-wheel__label" x={labelPosition.x} y={labelPosition.y} textAnchor="middle">
-                {series.sphereName}
+              <text className="somatic-wheel__label" x={labelPosition.x} y={labelStartY} textAnchor="middle">
+                {labelLines.map((line, lineIndex) => (
+                  <tspan key={`${series.id}-line-${lineIndex}`} x={labelPosition.x} dy={lineIndex === 0 ? 0 : 20}>
+                    {line}
+                  </tspan>
+                ))}
               </text>
             </g>
           );
@@ -82,15 +118,19 @@ export function SomaticWheel({ snapshot }: SomaticWheelProps) {
               className={`somatic-wheel__center somatic-wheel__center--${getValueClass(snapshot.values[baseSeries.id].digit)}`}
               cx={center}
               cy={center}
-              r={60}
+              r={78}
             />
-            <text className="somatic-wheel__center-kicker" x={center} y={center - 18} textAnchor="middle">
-              {baseSeries.sphereName}
+            <text className="somatic-wheel__center-kicker" x={center} y={centerLabelY} textAnchor="middle">
+              {centerLines.map((line, lineIndex) => (
+                <tspan key={`center-${lineIndex}`} x={center} dy={lineIndex === 0 ? 0 : 20}>
+                  {line}
+                </tspan>
+              ))}
             </text>
-            <text className="somatic-wheel__center-digit" x={center} y={center + 10} textAnchor="middle">
+            <text className="somatic-wheel__center-digit" x={center} y={center + 8} textAnchor="middle">
               {snapshot.values[baseSeries.id].digit}
             </text>
-            <text className="somatic-wheel__center-age" x={center} y={center + 32} textAnchor="middle">
+            <text className="somatic-wheel__center-age" x={center} y={center + 36} textAnchor="middle">
               Возраст {snapshot.age}
             </text>
           </g>

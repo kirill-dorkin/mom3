@@ -57,18 +57,18 @@ function buildAreaPath(points: Array<{ x: number; y: number }>, zeroY: number): 
 }
 
 export const SomaticStandardGraphBook = memo(function SomaticStandardGraphBook({ view }: SomaticStandardGraphBookProps) {
-  const width = 1460;
-  const height = 820;
-  const paddingLeft = 64;
-  const paddingTop = 24;
-  const graphWidth = 900;
-  const graphHeight = 430;
-  const bandWidth = 430;
+  const width = 1880;
+  const height = 980;
+  const paddingLeft = 84;
+  const paddingTop = 28;
+  const graphWidth = 1240;
+  const graphHeight = 460;
+  const bandWidth = 520;
   const graphLeft = paddingLeft;
   const graphTop = paddingTop;
   const graphBottom = graphTop + graphHeight;
-  const labelTop = graphBottom + 38;
-  const labelBottom = height - 28;
+  const labelTop = graphBottom + 52;
+  const labelBottom = height - 42;
   const bandLeft = graphLeft + graphWidth;
   const axisStepY = graphHeight / (view.axisOrder.length - 1);
   const columnWidth = graphWidth / view.columns.length;
@@ -119,10 +119,15 @@ export const SomaticStandardGraphBook = memo(function SomaticStandardGraphBook({
         {view.columns.map((column, index) => {
           const left = xForColumnIndex(index);
           const center = left + columnWidth / 2;
-          const lifeLines = splitIntoLines(column.lifeLabel, 14);
-          const healthLines = splitIntoLines(column.healthLabel, 16);
+          const lifeLines = splitIntoLines(column.lifeLabel, 12);
+          const healthLines = splitIntoLines(column.healthLabel, 14);
+          const lifeLineHeight = 28;
+          const healthLineHeight = 24;
           const lifeStartY = labelTop;
-          const healthStartY = Math.min(labelBottom - Math.max(0, (healthLines.length - 1) * 22), labelTop + 94);
+          const healthStartY = Math.min(
+            labelBottom - Math.max(0, (healthLines.length - 1) * healthLineHeight),
+            lifeStartY + lifeLines.length * lifeLineHeight + 50
+          );
 
           return (
             <g key={`standard-column-${column.seriesId}`}>
@@ -130,14 +135,14 @@ export const SomaticStandardGraphBook = memo(function SomaticStandardGraphBook({
               <line className="somatic-standard-graph__column somatic-standard-graph__column--label" x1={left} y1={graphBottom} x2={left} y2={labelBottom} />
               <text className="somatic-standard-graph__life-label" x={center} y={lifeStartY} textAnchor="middle">
                 {lifeLines.map((line, lineIndex) => (
-                  <tspan key={`life-${column.seriesId}-${lineIndex}`} x={center} dy={lineIndex === 0 ? 0 : 22}>
+                  <tspan key={`life-${column.seriesId}-${lineIndex}`} x={center} dy={lineIndex === 0 ? 0 : lifeLineHeight}>
                     {line}
                   </tspan>
                 ))}
               </text>
               <text className="somatic-standard-graph__health-label" x={center} y={healthStartY} textAnchor="middle">
                 {healthLines.map((line, lineIndex) => (
-                  <tspan key={`health-${column.seriesId}-${lineIndex}`} x={center} dy={lineIndex === 0 ? 0 : 20}>
+                  <tspan key={`health-${column.seriesId}-${lineIndex}`} x={center} dy={lineIndex === 0 ? 0 : healthLineHeight}>
                     {line}
                   </tspan>
                 ))}
@@ -165,6 +170,17 @@ export const SomaticStandardGraphBook = memo(function SomaticStandardGraphBook({
           const top = yForAxisIndex(band.axisIndexFrom);
           const bottom = yForAxisIndex(band.axisIndexTo);
           const centerY = (top + bottom) / 2;
+          const titleLines = splitIntoLines(band.title, 22);
+          const descriptionLines = splitIntoLines(band.description, 30);
+          const titleLineHeight = 22;
+          const descriptionLineHeight = 18;
+          const textGap = 10;
+          const totalTextHeight =
+            titleLines.length * titleLineHeight +
+            descriptionLines.length * descriptionLineHeight +
+            (descriptionLines.length > 0 ? textGap : 0);
+          const titleY = centerY - totalTextHeight / 2 + 8;
+          const descriptionY = titleY + titleLines.length * titleLineHeight + textGap;
 
           return (
             <g key={`standard-band-${band.order}`}>
@@ -175,11 +191,23 @@ export const SomaticStandardGraphBook = memo(function SomaticStandardGraphBook({
                 width={bandWidth}
                 height={bottom - top}
               />
-              <text className="somatic-standard-graph__band-title" x={bandLeft + bandWidth / 2} y={centerY - 6} textAnchor="middle">
-                {band.title}
+              <text className="somatic-standard-graph__band-title" x={bandLeft + bandWidth / 2} y={titleY} textAnchor="middle">
+                {titleLines.map((line, lineIndex) => (
+                  <tspan key={`band-title-${band.order}-${lineIndex}`} x={bandLeft + bandWidth / 2} dy={lineIndex === 0 ? 0 : titleLineHeight}>
+                    {line}
+                  </tspan>
+                ))}
               </text>
-              <text className="somatic-standard-graph__band-description" x={bandLeft + bandWidth / 2} y={centerY + 14} textAnchor="middle">
-                {band.description}
+              <text className="somatic-standard-graph__band-description" x={bandLeft + bandWidth / 2} y={descriptionY} textAnchor="middle">
+                {descriptionLines.map((line, lineIndex) => (
+                  <tspan
+                    key={`band-description-${band.order}-${lineIndex}`}
+                    x={bandLeft + bandWidth / 2}
+                    dy={lineIndex === 0 ? 0 : descriptionLineHeight}
+                  >
+                    {line}
+                  </tspan>
+                ))}
               </text>
             </g>
           );

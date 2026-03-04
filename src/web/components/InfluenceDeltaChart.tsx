@@ -5,13 +5,41 @@ interface InfluenceDeltaChartProps {
   title: string;
 }
 
+function splitIntoLines(text: string, maxLineLength: number): string[] {
+  const words = text.trim().split(/\s+/).filter(Boolean);
+
+  if (words.length === 0) {
+    return [];
+  }
+
+  const lines: string[] = [];
+  let currentLine = "";
+
+  for (const word of words) {
+    const candidate = currentLine ? `${currentLine} ${word}` : word;
+    if (currentLine && candidate.length > maxLineLength) {
+      lines.push(currentLine);
+      currentLine = word;
+      continue;
+    }
+
+    currentLine = candidate;
+  }
+
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+
+  return lines;
+}
+
 export function InfluenceDeltaChart({ rows, title }: InfluenceDeltaChartProps) {
-  const width = 760;
-  const rowHeight = 34;
-  const height = rows.length * rowHeight + 46;
-  const paddingTop = 22;
-  const labelWidth = 180;
-  const rightPadding = 28;
+  const width = 1040;
+  const rowHeight = 62;
+  const height = rows.length * rowHeight + 54;
+  const paddingTop = 26;
+  const labelWidth = 340;
+  const rightPadding = 42;
   const innerWidth = width - labelWidth - rightPadding;
   const centerX = labelWidth + innerWidth / 2;
   const maxAbsDelta = Math.max(...rows.map((row) => Math.abs(row.deltaScore)), 1);
@@ -27,25 +55,30 @@ export function InfluenceDeltaChart({ rows, title }: InfluenceDeltaChartProps) {
       <svg className="delta-chart" viewBox={`0 0 ${width} ${height}`} role="img" aria-label={title}>
         <line className="delta-chart__axis" x1={centerX} y1={paddingTop - 6} x2={centerX} y2={height - 8} />
         {rows.map((row, index) => {
-          const y = paddingTop + index * rowHeight;
+          const rowTop = paddingTop + index * rowHeight;
+          const labelLines = splitIntoLines(`${row.houseId}. ${row.houseName}`, 22);
           const barEndX = xForDelta(row.deltaScore);
           const leftX = Math.min(centerX, barEndX);
           const barWidth = Math.max(Math.abs(barEndX - centerX), row.deltaScore === 0 ? 2 : 0);
           return (
             <g key={row.houseId}>
-              <text className="delta-chart__label" x={8} y={y + 14}>
-                {row.houseId}. {row.houseName}
+              <text className="delta-chart__label" x={10} y={rowTop + 18} textAnchor="start">
+                {labelLines.map((line, lineIndex) => (
+                  <tspan key={`${row.houseId}-line-${lineIndex}`} x={10} dy={lineIndex === 0 ? 0 : 22}>
+                    {line}
+                  </tspan>
+                ))}
               </text>
-              <line className="delta-chart__grid" x1={labelWidth} y1={y + 6} x2={width - rightPadding} y2={y + 6} />
+              <line className="delta-chart__grid" x1={labelWidth} y1={rowTop + 24} x2={width - rightPadding} y2={rowTop + 24} />
               <rect
                 className={`delta-chart__bar delta-chart__bar--${row.trend}`}
                 x={leftX}
-                y={y - 2}
+                y={rowTop + 14}
                 width={barWidth}
-                height={16}
-                rx={8}
+                height={20}
+                rx={10}
               />
-              <text className="delta-chart__value" x={width - 6} y={y + 14} textAnchor="end">
+              <text className="delta-chart__value" x={width - 8} y={rowTop + 30} textAnchor="end">
                 {row.deltaScore > 0 ? `+${row.deltaScore}` : row.deltaScore}
               </text>
             </g>

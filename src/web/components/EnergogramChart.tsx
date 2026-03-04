@@ -133,14 +133,14 @@ function panelClassName(tone: FigurePanel["tone"]): string {
 }
 
 export const EnergogramChart = memo(function EnergogramChart({ projection, title, subtitle, variant = "personal" }: EnergogramChartProps) {
-  const width = 1120;
-  const height = 820;
+  const width = 1260;
+  const height = 920;
   const topPadding = 92;
-  const bottomPadding = 48;
+  const bottomPadding = 56;
   const houseColumnWidth = 84;
-  const rightScaleWidth = 320;
+  const rightScaleWidth = 380;
   const figureGap = 16;
-  const plotWidth = variant === "paired" ? 420 : 460;
+  const plotWidth = variant === "paired" ? 460 : 500;
   const figurePanels: FigurePanel[] =
     variant === "paired"
       ? [
@@ -206,10 +206,10 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
           const y = yForRowCenter(point.rowIndex);
           const rowTop = topPadding + rowHeight * point.rowIndex;
           const rowBottom = rowTop + rowHeight;
-          const houseNameLines = splitIntoLines(point.houseName, 24);
-          const bodySystemLines = splitIntoLines(point.bodySystem, 28);
-          const houseLineHeight = 18;
-          const bodyLineHeight = 15;
+          const houseNameLines = splitIntoLines(point.houseName, 18);
+          const bodySystemLines = splitIntoLines(point.bodySystem, 22);
+          const houseLineHeight = 22;
+          const bodyLineHeight = 18;
           const blockGap = 6;
           const houseBlockHeight = houseNameLines.length * houseLineHeight;
           const bodyBlockHeight = bodySystemLines.length * bodyLineHeight;
