@@ -30,7 +30,7 @@ body,
 }
 
 html {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 body {
@@ -41,7 +41,7 @@ body {
     radial-gradient(circle at top right, rgba(157, 79, 47, 0.16), transparent 24rem),
     linear-gradient(180deg, #f4ecdd 0%, #ece0cb 100%);
   font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.6;
 }
 
@@ -49,11 +49,11 @@ input,
 select,
 button {
   font: inherit;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 svg text {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 th,
@@ -121,7 +121,7 @@ td {
   margin: 0;
   max-width: 52rem;
   color: var(--muted);
-  font-size: 1.16rem;
+  font-size: 1.24rem;
   line-height: 1.6;
 }
 
@@ -153,8 +153,13 @@ td {
 .metric-card strong {
   display: block;
   margin-top: 10px;
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1;
+}
+
+.metric-card span,
+.note-card strong {
+  font-size: 1.08rem;
 }
 
 .control-panel {
@@ -191,7 +196,7 @@ td {
 .control-group label {
   display: grid;
   gap: 8px;
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 
 .control-group input,
@@ -202,7 +207,7 @@ td {
   background: rgba(255, 255, 255, 0.84);
   padding: 14px 16px;
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.08rem;
 }
 
 .control-input--invalid {
@@ -217,7 +222,7 @@ td {
 
 .control-field__hint {
   min-height: 1.2em;
-  font-size: 0.94rem;
+  font-size: 1rem;
   line-height: 1.4;
 }
 
@@ -236,7 +241,7 @@ td {
 
 .control-note {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.12rem;
   line-height: 1.55;
 }
 
@@ -259,12 +264,12 @@ td {
 }
 
 .mode-chip strong {
-  font-size: 1.05rem;
+  font-size: 1.14rem;
 }
 
 .mode-chip span {
   color: var(--muted);
-  font-size: 0.94rem;
+  font-size: 1rem;
   line-height: 1.45;
 }
 
@@ -297,12 +302,12 @@ td {
 
 .section-block__header h2 {
   margin: 0 0 8px;
-  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+  font-size: clamp(2rem, 2.4vw, 2.8rem);
 }
 
 .section-block__header p {
   margin: 0;
-  font-size: 1.06rem;
+  font-size: 1.14rem;
   line-height: 1.55;
 }
 
@@ -342,14 +347,14 @@ td {
 
 .comparison-shell__header h3 {
   margin: 0 0 6px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   overflow-wrap: anywhere;
 }
 
 .comparison-shell__header p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.02rem;
+  font-size: 1.12rem;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
@@ -380,13 +385,13 @@ td {
 
 .chart-card__header h3 {
   margin: 0 0 4px;
-  font-size: clamp(1.32rem, 1.45vw, 1.64rem);
+  font-size: clamp(1.56rem, 1.7vw, 1.92rem);
   overflow-wrap: anywhere;
 }
 
 .chart-card__header p {
   margin: 0;
-  font-size: 1.06rem;
+  font-size: 1.16rem;
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
@@ -395,12 +400,13 @@ td {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 14px;
+  padding: 12px 16px;
   border: 1px solid rgba(157, 79, 47, 0.24);
   border-radius: var(--radius-sm);
   background: rgba(157, 79, 47, 0.12);
   color: var(--ink);
   cursor: pointer;
+  font-size: 1.08rem;
 }
 
 .action-button:hover {
@@ -423,6 +429,7 @@ td {
   justify-content: space-between;
   gap: 16px;
   padding: 16px 18px;
+  font-size: 1.08rem;
 }
 
 .method-guide__summary::-webkit-details-marker {
@@ -442,7 +449,7 @@ td {
 }
 
 .method-guide__summary-action {
-  font-size: 0.86rem;
+  font-size: 1rem;
   white-space: nowrap;
 }
 
@@ -455,6 +462,7 @@ td {
 
 .method-guide__intro {
   margin: 0;
+  font-size: 1.08rem;
   line-height: 1.55;
 }
 
@@ -468,10 +476,12 @@ td {
 .method-guide__step strong {
   display: block;
   margin-bottom: 4px;
+  font-size: 1.12rem;
 }
 
 .method-guide__step p {
   margin: 0;
+  font-size: 1.04rem;
   line-height: 1.55;
 }
 
@@ -483,7 +493,7 @@ td {
   background: rgba(31, 27, 23, 0.05);
   color: var(--ink);
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 0.84rem;
+  font-size: 0.98rem;
   white-space: pre-wrap;
 }
 
@@ -646,7 +656,7 @@ td {
 }
 
 .energogram-chart--book {
-  min-width: 640px;
+  min-width: 920px;
 }
 
 .energogram-chart__zone--negative {
@@ -712,7 +722,7 @@ td {
   fill: var(--muted);
   color: var(--muted);
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .energogram-chart__row-number--book {
@@ -738,33 +748,38 @@ td {
 .energogram-chart__zone-caption,
 .energogram-chart__axis-caption {
   fill: rgba(57, 50, 44, 0.74);
-  font-size: 14px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .energogram-chart__house-label {
   fill: rgba(57, 50, 44, 0.94);
-  font-size: 21px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .energogram-chart__body-label {
-  fill: rgba(57, 50, 44, 0.9);
-  font-size: 13px;
-  letter-spacing: 0.04em;
+  fill: rgba(57, 50, 44, 0.96);
+  font-size: 18px;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .energogram-chart__body-subtitle {
-  fill: rgba(57, 50, 44, 0.54);
-  font-size: 11px;
+  fill: rgba(57, 50, 44, 0.76);
+  font-size: 15px;
 }
 
 .table-shell {
   overflow: auto;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(63, 43, 25, 0.08);
+}
+
+.table-shell table,
+.sleep-cycle-table {
+  font-size: 1.04rem;
 }
 
 .heat-table {
@@ -876,7 +891,7 @@ td {
 .influence-table th,
 .influence-table td {
   border: 1px solid rgba(63, 43, 25, 0.08);
-  padding: 10px 8px;
+  padding: 12px 10px;
   text-align: center;
 }
 
@@ -912,7 +927,7 @@ td {
   gap: 8px;
   margin-top: 14px;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
@@ -971,10 +986,12 @@ td {
   margin-right: 8px;
   color: var(--muted);
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 1rem;
 }
 
 .influence-table__house-name {
   display: inline-block;
+  font-size: 1.08rem;
 }
 
 .influence-table__delta--improved {
@@ -1003,7 +1020,7 @@ td {
 
 .inserted-block-table__cell {
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 0.92rem;
+  font-size: 1.02rem;
 }
 
 .inserted-block-table__cell--root {
@@ -1328,7 +1345,7 @@ td {
   border-radius: 999px;
   background: rgba(31, 27, 23, 0.06);
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 0.82rem;
+  font-size: 0.96rem;
 }
 
 .lifetime-table__sota-caption {
@@ -1336,11 +1353,11 @@ td {
   gap: 4px;
   margin-top: 12px;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 1rem;
 }
 
 .lifetime-table__sota-caption span {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
 }
 
 .lifetime-table__definition-cell {
@@ -1365,12 +1382,12 @@ td {
 }
 
 .heat-table__head-title {
-  font-size: 0.92rem;
+  font-size: 1.08rem;
 }
 
 .heat-table__head-subtitle {
   margin-top: 4px;
-  font-size: 0.76rem;
+  font-size: 0.94rem;
   line-height: 1.35;
 }
 
@@ -1392,15 +1409,15 @@ td {
 
 .heat-table__digit {
   display: block;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.22rem;
+  font-weight: 800;
 }
 
 .heat-table__score {
   display: block;
   margin-top: 4px;
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.92rem;
 }
 
 .timeline-chart,
@@ -1465,7 +1482,7 @@ td {
 .delta-chart__label,
 .delta-chart__value {
   fill: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
@@ -3331,12 +3348,12 @@ td {
 
 .honeycomb-period strong {
   font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
-  font-size: 0.98rem;
+  font-size: 1.1rem;
 }
 
 .honeycomb-period span {
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 1rem;
   line-height: 1.4;
 }
 
@@ -3357,6 +3374,7 @@ td {
 
 .note-card p {
   margin: 8px 0 0;
+  font-size: 1.08rem;
   line-height: 1.55;
 }
 
@@ -3412,7 +3430,7 @@ td {
   border-radius: 999px;
   background: rgba(31, 27, 23, 0.06);
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -3420,7 +3438,7 @@ td {
 .coverage-card h3,
 .gap-card strong {
   margin: 0 0 8px;
-  font-size: 1rem;
+  font-size: 1.18rem;
 }
 
 .coverage-card p,
@@ -3428,13 +3446,13 @@ td {
   margin: 0;
   line-height: 1.55;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 1.04rem;
 }
 
 .coverage-card__meta {
   display: block;
   margin-top: 12px;
-  font-size: 0.78rem;
+  font-size: 0.96rem;
 }
 
 .reference-board,
@@ -3801,12 +3819,12 @@ td {
 }
 
 .sleep-need-chart__caption strong {
-  font-size: 0.92rem;
+  font-size: 1.06rem;
 }
 
 .sleep-need-chart__caption span {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.96rem;
   line-height: 1.35;
 }
 
@@ -3820,7 +3838,7 @@ td {
 .sleep-cycle-table th,
 .sleep-cycle-table td {
   border: 1px solid rgba(63, 43, 25, 0.08);
-  padding: 10px 8px;
+  padding: 12px 10px;
   text-align: center;
 }
 
@@ -3849,6 +3867,7 @@ td {
   border: 1px solid rgba(63, 43, 25, 0.08);
   background: rgba(255, 255, 255, 0.52);
   padding: 14px;
+  font-size: 1.04rem;
 }
 
 .reference-list ol,
@@ -3953,6 +3972,10 @@ td {
 }
 
 @media (max-width: 720px) {
+  html {
+    font-size: 18px;
+  }
+
   .page-shell {
     width: min(100vw - 20px, 1500px);
     padding-top: 16px;

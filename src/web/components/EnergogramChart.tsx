@@ -133,14 +133,14 @@ function panelClassName(tone: FigurePanel["tone"]): string {
 }
 
 export const EnergogramChart = memo(function EnergogramChart({ projection, title, subtitle, variant = "personal" }: EnergogramChartProps) {
-  const width = 760;
-  const height = 560;
-  const topPadding = 74;
-  const bottomPadding = 36;
-  const leftLabelWidth = 42;
-  const rightScaleWidth = 136;
+  const width = 980;
+  const height = 820;
+  const topPadding = 92;
+  const bottomPadding = 48;
+  const leftLabelWidth = 56;
+  const rightScaleWidth = 260;
   const figureGap = 16;
-  const plotWidth = variant === "paired" ? 340 : 360;
+  const plotWidth = variant === "paired" ? 420 : 460;
   const figurePanels: FigurePanel[] =
     variant === "paired"
       ? [
@@ -199,23 +199,35 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
         <polyline className="energogram-chart__line energogram-chart__line--book" fill="none" points={path} />
         {projection.points.map((point) => {
           const y = yForRowCenter(point.rowIndex);
-          const houseNameLines = splitIntoLines(point.houseName, 18);
-          const bodySystemLines = splitIntoLines(point.bodySystem, 20);
+          const rowTop = topPadding + rowHeight * point.rowIndex;
+          const rowBottom = rowTop + rowHeight;
+          const houseNameLines = splitIntoLines(point.houseName, 14);
+          const bodySystemLines = splitIntoLines(point.bodySystem, 18);
+          const houseLineHeight = 20;
+          const bodyLineHeight = 17;
+          const blockGap = 8;
+          const houseBlockHeight = houseNameLines.length * houseLineHeight;
+          const bodyBlockHeight = bodySystemLines.length * bodyLineHeight;
+          const totalBlockHeight = houseBlockHeight + bodyBlockHeight + blockGap;
+          const blockTop = Math.max(rowTop + 10, y - totalBlockHeight / 2 + 8);
+          const houseLabelY = blockTop;
+          const bodyLabelY = Math.min(rowBottom - bodyBlockHeight - 8, blockTop + houseBlockHeight + blockGap);
+
           return (
             <g key={`row-label-${point.houseId}`}>
               <text className="energogram-chart__house-label" x={plotLeft - leftLabelWidth} y={y + 4} textAnchor="middle">
                 {point.houseId}
               </text>
-              <text className="energogram-chart__body-label" x={plotRight + rightScaleWidth / 2} y={y - 10} textAnchor="middle">
+              <text className="energogram-chart__body-label" x={plotRight + rightScaleWidth / 2} y={houseLabelY} textAnchor="middle">
                 {houseNameLines.map((line, index) => (
-                  <tspan key={`${point.houseId}-house-${index}`} x={plotRight + rightScaleWidth / 2} dy={index === 0 ? 0 : 13}>
+                  <tspan key={`${point.houseId}-house-${index}`} x={plotRight + rightScaleWidth / 2} dy={index === 0 ? 0 : houseLineHeight}>
                     {line}
                   </tspan>
                 ))}
               </text>
-              <text className="energogram-chart__body-subtitle" x={plotRight + rightScaleWidth / 2} y={y + 18} textAnchor="middle">
+              <text className="energogram-chart__body-subtitle" x={plotRight + rightScaleWidth / 2} y={bodyLabelY} textAnchor="middle">
                 {bodySystemLines.map((line, index) => (
-                  <tspan key={`${point.houseId}-system-${index}`} x={plotRight + rightScaleWidth / 2} dy={index === 0 ? 0 : 11}>
+                  <tspan key={`${point.houseId}-system-${index}`} x={plotRight + rightScaleWidth / 2} dy={index === 0 ? 0 : bodyLineHeight}>
                     {line}
                   </tspan>
                 ))}
