@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "key": "connection",
+    "order": 0,
+    "sphereName": "Подключение",
+    "healthName": "Психосоматика",
+    "somaColorName": null,
+    "source": { "pdfPages": [122, 128] }
+  },
+  {
+    "id": 1,
+    "key": "publicity",
+    "order": 1,
+    "sphereName": "Общество",
+    "healthName": "Нервы и психика",
+    "somaColorName": "Серый",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 2,
+    "key": "family-line",
+    "order": 2,
+    "sphereName": "Род",
+    "healthName": "Репродуктивная система",
+    "somaColorName": "Красный",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 3,
+    "key": "self-realization",
+    "order": 3,
+    "sphereName": "Самореализация",
+    "healthName": "Пищеварительная система",
+    "somaColorName": "Оранжевый",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 4,
+    "key": "career",
+    "order": 4,
+    "sphereName": "Карьера",
+    "healthName": "Выделительная система",
+    "somaColorName": "Желтый",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 5,
+    "key": "talents",
+    "order": 5,
+    "sphereName": "Таланты",
+    "healthName": "Костно-мышечная система",
+    "somaColorName": "Зеленый",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 6,
+    "key": "home",
+    "order": 6,
+    "sphereName": "Быт и семья",
+    "healthName": "Кровеносная система",
+    "somaColorName": "Голубой",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 7,
+    "key": "education",
+    "order": 7,
+    "sphereName": "Обучение",
+    "healthName": "Дыхательная система",
+    "somaColorName": "Синий",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 8,
+    "key": "spirituality",
+    "order": 8,
+    "sphereName": "Духовность",
+    "healthName": "Иммунная система и лимфа",
+    "somaColorName": "Фиолетовый",
+    "source": { "pdfPages": [120, 122, 128] }
+  },
+  {
+    "id": 9,
+    "key": "magic",
+    "order": 9,
+    "sphereName": "Магия",
+    "healthName": "Эндокринная система",
+    "somaColorName": "Малиновый",
+    "source": { "pdfPages": [120, 122, 128] }
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "personal-energy-potential",
+    "status": "direct",
+    "source": { "pdfPages": [84, 88] },
+    "inputs": ["birthDate"],
+    "outputs": ["triangleRows", "digitCounts", "houseCounts", "houseScores", "matrixCounts", "matrixScores"],
+    "notes": "Fully traceable from the book example 18.03.1964."
+  },
+  {
+    "id": "paired-energy-influence",
+    "status": "direct",
+    "source": { "pdfPages": [99, 101] },
+    "inputs": ["birthDatePrimary", "birthDateSecondary"],
+    "outputs": ["influenceRows", "influenceCounts", "influenceScores"],
+    "notes": "Directional influence, not symmetric compatibility."
+  },
+  {
+    "id": "somato-energodiagram",
+    "status": "lookup_required",
+    "source": { "pdfPages": [103, 151] },
+    "inputs": ["birthDate", "targetAge"],
+    "outputs": ["yearValues", "yearScores", "diagramSeries"],
+    "notes": "Formula is clear; the site now reproduces the decade table, the printed standard one-year graph, the printed slice-energogram plate, the interzone month expansion together with the page-139-140 direction/zone interpretation table and a book-style two-level annual/monthly plate, the printed quick-roll matrix up to 100 years, the page-147-150 step-by-step age-roll derivation, and the simplified inserted-block root transitions, while some later graph templates still need progressive digitization."
+  },
+  {
+    "id": "root-cycle-wave",
+    "status": "direct",
+    "source": { "pdfPages": [121, 149] },
+    "inputs": ["birthDate", "ageFrom", "ageTo"],
+    "outputs": ["rootRotation", "insertedBlocks", "repeatGroups"],
+    "notes": "The book rotates the root through zero year by year and repeats the same residue groups every ten years; the site now renders the simplified inserted-block timeline, the age-repeat table, the full-life root sine wave, and the polar remainder chart directly from that rule."
+  },
+  {
+    "id": "lifetime-shadow-diagram",
+    "status": "direct",
+    "source": { "pdfPages": [162, 174] },
+    "inputs": ["name", "birthSurname", "currentSurname", "surnameChangeAge"],
+    "outputs": ["shadowPeriods", "periodTypes", "honeycombAssignments"],
+    "notes": "Letter-to-value table and period rules are digitized from the book; the lifetime block now follows the printed split-column final graph and summary table, while some boundary-year details still remain marked separately."
+  },
+  {
+    "id": "disease-honeycomb",
+    "status": "direct",
+    "source": { "pdfPages": [177, 189] },
+    "inputs": ["birthDate", "name", "birthSurname", "currentSurname", "surnameChangeAge"],
+    "outputs": ["candidateYearsBySota", "confirmedRiskYears", "excludedRiskYears", "activatedHouseDigits"],
+    "notes": "The site now follows the book rule-engine layer directly: dangerous years come from the lifetime diagram, then each year is rechecked through the houses of the corresponding honeycomb cell, and only active cells remain confirmed. The chapter also has book-style decade radar charts and house tables for each sota; only the exact printed page geometry is still tracked separately as a visual digitization gap."
+  },
+  {
+    "id": "honeycomb-frame",
+    "status": "direct",
+    "source": { "pdfPages": [215, 221] },
+    "inputs": ["birthDate", "name", "birthSurname"],
+    "outputs": ["OPV", "KCH", "EB", "TR", "SZ", "SM", "OL"],
+    "notes": "The worked example 18.03.1964 fixes Dt as the day tone, Mt as the month tone, and Gt as the digit-summed year tone in the closed 22-arcana system."
+  },
+  {
+    "id": "hourly-biorhythm",
+    "status": "direct",
+    "source": { "pdfPages": [321, 342] },
+    "inputs": ["birthDate", "fullName", "birthHour"],
+    "outputs": ["hourlyValues", "averageLine", "activityZones"],
+    "notes": "The strict site mode now follows the volume directly: the user enters the base-eight values manually and the graph is expanded, hour-mapped, and interpreted strictly from the book. The optional auto-FIO mode is kept as a separate helper based on the authors' published 1..9 transcription table and is not treated as the compliance path for this volume."
+  }
+]

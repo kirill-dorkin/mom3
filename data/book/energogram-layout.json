@@ -1,0 +1,9 @@
+{
+  "houseOrder": [9, 8, 5, 4, 2, 3, 6, 7, 1],
+  "minScore": -5,
+  "maxScore": 4,
+  "source": {
+    "pdfPages": [102]
+  },
+  "notes": "Top-to-bottom house order shown above the energogram templates on page 102."
+}

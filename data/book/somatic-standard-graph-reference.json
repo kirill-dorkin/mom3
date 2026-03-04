@@ -1,0 +1,101 @@
+{
+  "source": {
+    "pdfPages": [106, 117, 154],
+    "notes": "Standard one-year book graph with 9 external life systems and 9 interpretive bands."
+  },
+  "axisOrder": [4, 3, 2, 1, 0, 5, 6, 7, 8, 9],
+  "series": [
+    {
+      "seriesId": 1,
+      "lifeLabel": "Публичность",
+      "healthLabel": "Сосудистая и нервная система"
+    },
+    {
+      "seriesId": 2,
+      "lifeLabel": "Продолжение рода",
+      "healthLabel": "Репродуктивная система"
+    },
+    {
+      "seriesId": 3,
+      "lifeLabel": "Самостоятельность",
+      "healthLabel": "Пищеварительная система"
+    },
+    {
+      "seriesId": 4,
+      "lifeLabel": "Карьера и деньги",
+      "healthLabel": "Выделительная система"
+    },
+    {
+      "seriesId": 5,
+      "lifeLabel": "Таланты и хобби",
+      "healthLabel": "Костно-мышечная система"
+    },
+    {
+      "seriesId": 6,
+      "lifeLabel": "Быт и комфорт",
+      "healthLabel": "Сердечно-кровеносная система"
+    },
+    {
+      "seriesId": 7,
+      "lifeLabel": "Обучение и науки",
+      "healthLabel": "Дыхательная система"
+    },
+    {
+      "seriesId": 8,
+      "lifeLabel": "Духовность и карма",
+      "healthLabel": "Иммунная система"
+    },
+    {
+      "seriesId": 9,
+      "lifeLabel": "Магия и тонкий мир",
+      "healthLabel": "Эндокринная система"
+    }
+  ],
+  "bands": [
+    {
+      "order": 0,
+      "title": "Краеугольная сфера",
+      "description": "самовосстановление"
+    },
+    {
+      "order": 1,
+      "title": "Тайное желание",
+      "description": "соматическое состояние"
+    },
+    {
+      "order": 2,
+      "title": "Изучение",
+      "description": "сбой вследствие экологии"
+    },
+    {
+      "order": 3,
+      "title": "Слабый интерес",
+      "description": "психосоматика"
+    },
+    {
+      "order": 4,
+      "title": "Нет интереса",
+      "description": "временное ухудшение"
+    },
+    {
+      "order": 5,
+      "title": "Навязанность",
+      "description": "нестабильность функционирования"
+    },
+    {
+      "order": 6,
+      "title": "Раздражительность",
+      "description": "болевые ощущения"
+    },
+    {
+      "order": 7,
+      "title": "Сопротивление",
+      "description": "патологические изменения"
+    },
+    {
+      "order": 8,
+      "title": "Разочарование",
+      "description": "неудовлетворительное"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Ирина",
+  "birthSurname": "Шапкова",
+  "currentSurname": "Роанова",
+  "surnameChangeAge": 19,
+  "arcanaByWord": {
+    "name": 18,
+    "birthSurname": 9,
+    "currentSurname": 12
+  },
+  "shadowSteps": {
+    "birth": 9,
+    "current": 3
+  },
+  "periodTypeAges": {
+    "especially_unfavorable": [23, 24, 25, 37, 41, 42, 43, 59, 60, 61, 73, 77, 78, 79, 91, 95, 96, 97],
+    "unfavorable": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "challenging": [19, 20, 21, 22, 26, 27, 38, 39, 40, 44, 45, 56, 57, 58, 62, 63, 74, 75, 76, 80, 81, 92, 93, 94, 98, 99],
+    "depressive": [29, 30, 31, 35, 36, 47, 48, 49, 53, 54, 65, 66, 67, 71, 72, 83, 84, 85, 89, 90],
+    "favorable": [10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "especially_favorable": [28, 32, 33, 34, 46, 50, 51, 52, 64, 68, 69, 70, 82, 86, 87, 88, 100]
+  },
+  "source": {
+    "pdfPages": [162, 174],
+    "notes": "The printed final table on page 174 appears to contain a likely typo for ages 29-31; the example stores only age lists, not the disputed honeycomb label."
+  }
+}

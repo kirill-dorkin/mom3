@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-core/
+.tmp/
+tmp/
+.DS_Store
+
+# Source materials not needed for runtime deploy
+book.pdf
+book_ocr.txt
+book_analysis_gsd.md
+book_site_spec.md

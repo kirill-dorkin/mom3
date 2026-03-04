@@ -1,0 +1,74 @@
+[
+  {
+    "id": "honeycomb-frame-symbols",
+    "severity": "low",
+    "source": { "pdfPages": [215, 216] },
+    "description": "The book does not restate Dt, Mt and Gt in prose, but the example 18.03.1964 resolves them as day, month and digit-summed year tones in the closed 22-arcana system."
+  },
+  {
+    "id": "biorhythm-consonant-mapping",
+    "severity": "low",
+    "source": { "pdfPages": [321, 323] },
+    "description": "The consonant transcription for chapter 3 is digitized as the same 1..9 letter table the authors publish for this method, but the volume itself still shows it only implicitly through examples."
+  },
+  {
+    "id": "biorhythm-book-example-discrepancy",
+    "severity": "medium",
+    "source": { "pdfPages": [322, 323] },
+    "description": "The printed Shapkova 18.03.1964 biorhythm example conflicts with the direct 1..9 transcription table in columns 2 and 4. The site now resolves this by separating the strict book mode from the optional published-table helper mode; the discrepancy remains only for the helper mode."
+  },
+  {
+    "id": "sleep-need-chart-school-age-label",
+    "severity": "medium",
+    "source": { "pdfPages": [333] },
+    "description": "The printed sleep-need chart labels 'дети школьного возраста' as '(3-5 лет)', which conflicts with the adjacent preschool row. The site preserves the printed label and marks it as a source inconsistency."
+  },
+  {
+    "id": "sleep-cycle-table-duplicate-60",
+    "severity": "medium",
+    "source": { "pdfPages": [336] },
+    "description": "The printed table 'Изменение циклов сна с возрастом' contains two adjacent columns both labeled '60 лет'. The site preserves the table exactly as printed instead of silently correcting the age labels."
+  },
+  {
+    "id": "arcana-health-ocr-normalization",
+    "severity": "low",
+    "source": { "pdfPages": [232, 238, 306, 320] },
+    "description": "The arcana health atlas is digitized directly from chapter 2, but several printed lists required light OCR cleanup or sentence normalization when the scan split one bullet across lines."
+  },
+  {
+    "id": "inserted-root-block-template",
+    "severity": "medium",
+    "source": { "pdfPages": [146, 149] },
+    "description": "The simplified inserted-block multiyear root chart, the ten-year repeat groups, and book-style sine-strip/polar variants are now reproduced logically, but their exact printed geometry still needs manual digitization from the templates."
+  },
+  {
+    "id": "disease-honeycomb-ball-template",
+    "severity": "medium",
+    "source": { "pdfPages": [177, 189] },
+    "description": "The site now reproduces the dangerous-year rule-engine, the book-style decade radar charts, and the per-house tables for each honeycomb cell, but the exact printed multicolor page composition still needs manual digitization from the scan."
+  },
+  {
+    "id": "energo-gram-template-coordinates",
+    "severity": "medium",
+    "source": { "pdfPages": [101, 103] },
+    "description": "The energogram now follows the printed body-panel layout, the split negative/positive grid, and a more book-like row verification layer with fixed house labels and zone captions, but the exact silhouette outline and column spacing still require manual digitization from the scanned pages."
+  },
+  {
+    "id": "interzone-expanded-template",
+    "severity": "medium",
+    "source": { "pdfPages": [130, 133] },
+    "description": "The month-by-month interzone expansion, the page-139-140 direction/zone interpretation table, and a book-style two-level annual/monthly interzone plate are now reproduced in book-like form, but the exact full-page geometry and the handling of inserted intermediate somas still need manual comparison against the scan."
+  },
+  {
+    "id": "lifetime-shadow-template-geometry",
+    "severity": "low",
+    "source": { "pdfPages": [167, 174] },
+    "description": "The final split-column lifetime chart and summary table are now reproduced in book-like form, but exact page-level spacing and a few boundary-year details still require manual comparison against the scan."
+  },
+  {
+    "id": "lifetime-shadow-29-31-row",
+    "severity": "low",
+    "source": { "pdfPages": [174] },
+    "description": "The printed final table labels ages 29-31 as III honeycomb, which conflicts with the surrounding period logic and appears to be a likely book typo."
+  }
+]

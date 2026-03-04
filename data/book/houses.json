@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "matrixDigit": 1,
+    "matrixPosition": { "row": 3, "col": 1 },
+    "name": "Публичность",
+    "bodySystem": "Сосудистая и нервная система",
+    "somaColorName": "Серый",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 2,
+    "matrixDigit": 2,
+    "matrixPosition": { "row": 2, "col": 1 },
+    "name": "Продолжение рода",
+    "bodySystem": "Репродуктивная система",
+    "somaColorName": "Красный",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 3,
+    "matrixDigit": 3,
+    "matrixPosition": { "row": 1, "col": 1 },
+    "name": "Самостоятельность",
+    "bodySystem": "Пищеварительная система",
+    "somaColorName": "Оранжевый",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 4,
+    "matrixDigit": 4,
+    "matrixPosition": { "row": 3, "col": 2 },
+    "name": "Карьера и деньги",
+    "bodySystem": "Выделительная система",
+    "somaColorName": "Желтый",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 5,
+    "matrixDigit": 5,
+    "matrixPosition": { "row": 2, "col": 2 },
+    "name": "Таланты и хобби",
+    "bodySystem": "Костно-мышечная система",
+    "somaColorName": "Зеленый",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 6,
+    "matrixDigit": 6,
+    "matrixPosition": { "row": 1, "col": 2 },
+    "name": "Быт и комфорт",
+    "bodySystem": "Сердечно-кровеносная система",
+    "somaColorName": "Голубой",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 7,
+    "matrixDigit": 7,
+    "matrixPosition": { "row": 3, "col": 3 },
+    "name": "Обучение и науки",
+    "bodySystem": "Дыхательная система",
+    "somaColorName": "Синий",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 8,
+    "matrixDigit": 8,
+    "matrixPosition": { "row": 2, "col": 3 },
+    "name": "Духовность и карма",
+    "bodySystem": "Иммунная система",
+    "somaColorName": "Фиолетовый",
+    "source": { "pdfPages": [106, 110] }
+  },
+  {
+    "id": 9,
+    "matrixDigit": 9,
+    "matrixPosition": { "row": 1, "col": 3 },
+    "name": "Магия и интуиция",
+    "bodySystem": "Эндокринная система",
+    "somaColorName": "Малиновый",
+    "source": { "pdfPages": [106, 110] }
+  }
+]

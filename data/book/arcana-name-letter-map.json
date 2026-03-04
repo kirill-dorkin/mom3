@@ -1,0 +1,11 @@
+[
+  { "value": 1, "letters": ["А", "И", "С", "Ъ"], "source": { "pdfPages": [162] } },
+  { "value": 2, "letters": ["Б", "Й", "Т", "Ы"], "source": { "pdfPages": [162] } },
+  { "value": 3, "letters": ["В", "К", "У", "Ь"], "source": { "pdfPages": [162] } },
+  { "value": 4, "letters": ["Г", "Л", "Ф", "Э"], "source": { "pdfPages": [162] } },
+  { "value": 5, "letters": ["Д", "М", "Х", "Ю"], "source": { "pdfPages": [162] } },
+  { "value": 6, "letters": ["Е", "Н", "Ц", "Я"], "source": { "pdfPages": [162] } },
+  { "value": 7, "letters": ["Ё", "О", "Ч"], "source": { "pdfPages": [162] } },
+  { "value": 8, "letters": ["Ж", "П", "Ш"], "source": { "pdfPages": [162] } },
+  { "value": 9, "letters": ["З", "Р", "Щ"], "source": { "pdfPages": [162] } }
+]

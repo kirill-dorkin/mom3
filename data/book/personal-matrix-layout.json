@@ -1,0 +1,11 @@
+{
+  "layout": [
+    [3, 6, 9],
+    [2, 5, 8],
+    [1, 4, 7]
+  ],
+  "source": {
+    "pdfPages": [104, 105, 178]
+  },
+  "notes": "Layout verified against the worked example 18.03.1964. Row and column order reproduces the matrix shown in the book."
+}

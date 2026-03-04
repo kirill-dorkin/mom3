@@ -1,0 +1,28 @@
+{
+  "birthDate": "18.03.1964",
+  "name": "Ирина",
+  "birthSurname": "Шапкова",
+  "baseTones": {
+    "day": 18,
+    "month": 3,
+    "year": 20,
+    "surname": 9,
+    "name": 18
+  },
+  "metrics": {
+    "opv": 15,
+    "kch": 2,
+    "eb": 17,
+    "tr": 9,
+    "sz": 19,
+    "sm": 9,
+    "ol": 18
+  },
+  "protectionPolarity": "masculine",
+  "weakenedSystems": ["Иммунная система", "Лимфатическая система"],
+  "treatmentMistakeFactor": "Отеки, передозировка чем угодно, беременность",
+  "source": {
+    "pdfPages": [215, 218, 221],
+    "notes": "Worked example for Shapkova Irina born on 18.03.1964."
+  }
+}

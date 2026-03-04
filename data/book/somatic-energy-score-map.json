@@ -1,0 +1,12 @@
+[
+  { "digit": 0, "energyScore": 1 },
+  { "digit": 1, "energyScore": 2 },
+  { "digit": 2, "energyScore": 3 },
+  { "digit": 3, "energyScore": 4 },
+  { "digit": 4, "energyScore": 5 },
+  { "digit": 5, "energyScore": -1 },
+  { "digit": 6, "energyScore": -2 },
+  { "digit": 7, "energyScore": -3 },
+  { "digit": 8, "energyScore": -4 },
+  { "digit": 9, "energyScore": -5 }
+]

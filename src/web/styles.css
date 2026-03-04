@@ -1,0 +1,3993 @@
+:root {
+  --bg: #efe7d7;
+  --bg-soft: #f6f0e5;
+  --panel: rgba(255, 250, 241, 0.82);
+  --ink: #1f1b17;
+  --muted: #5b5147;
+  --line: rgba(63, 43, 25, 0.15);
+  --accent: #9d4f2f;
+  --accent-soft: rgba(157, 79, 47, 0.12);
+  --positive: #c3d5ae;
+  --positive-strong: #7f9c5a;
+  --negative: #e4baae;
+  --negative-strong: #b1634f;
+  --gold: #bf9854;
+  --shadow: 0 18px 50px rgba(44, 27, 17, 0.12);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(191, 152, 84, 0.22), transparent 22rem),
+    radial-gradient(circle at top right, rgba(157, 79, 47, 0.16), transparent 24rem),
+    linear-gradient(180deg, #f4ecdd 0%, #ece0cb 100%);
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  font-weight: 700;
+}
+
+svg text {
+  font-weight: 700;
+}
+
+th,
+td {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.page-shell {
+  width: min(1500px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 80px;
+}
+
+.hero,
+.control-panel,
+.section-block {
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 24px;
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -35% auto;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(191, 152, 84, 0.36) 0%, rgba(191, 152, 84, 0.06) 45%, transparent 72%);
+  pointer-events: none;
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.06);
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0 0 14px;
+  font-size: clamp(2.5rem, 4vw, 4.4rem);
+  line-height: 0.92;
+}
+
+.hero p {
+  margin: 0;
+  max-width: 52rem;
+  color: var(--muted);
+  font-size: 1.16rem;
+  line-height: 1.6;
+}
+
+.hero__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.metric-card,
+.note-card {
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.metric-card span,
+.note-card strong,
+.control-note,
+.chart-card__header p,
+.section-block__header p,
+.matrix-cell__system,
+.heat-table__head-subtitle {
+  color: var(--muted);
+}
+
+.metric-card strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.control-panel {
+  margin-top: 18px;
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  display: grid;
+  gap: 18px;
+}
+
+.control-group {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.control-group--wide {
+  grid-template-columns: 1fr;
+  align-items: end;
+}
+
+.control-group--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.control-group--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.control-group--three {
+  grid-template-columns: 1.5fr 1.4fr 0.6fr;
+}
+
+.control-group label {
+  display: grid;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.control-group input,
+.control-group select {
+  width: 100%;
+  border: 1px solid rgba(63, 43, 25, 0.14);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.84);
+  padding: 14px 16px;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.control-input--invalid {
+  border-color: rgba(177, 99, 79, 0.7) !important;
+  box-shadow: inset 0 0 0 1px rgba(177, 99, 79, 0.14);
+}
+
+.control-input--valid {
+  border-color: rgba(127, 156, 90, 0.72) !important;
+  box-shadow: inset 0 0 0 1px rgba(127, 156, 90, 0.12);
+}
+
+.control-field__hint {
+  min-height: 1.2em;
+  font-size: 0.94rem;
+  line-height: 1.4;
+}
+
+.control-field__hint--empty,
+.control-field__hint--incomplete {
+  color: var(--muted);
+}
+
+.control-field__hint--valid {
+  color: var(--positive-strong);
+}
+
+.control-field__hint--invalid {
+  color: var(--negative-strong);
+}
+
+.control-note {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.mode-chip-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mode-chip {
+  border: 1px solid rgba(63, 43, 25, 0.12);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.mode-chip strong {
+  font-size: 1.05rem;
+}
+
+.mode-chip span {
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.mode-chip:hover,
+.mode-chip:focus-visible {
+  border-color: rgba(157, 79, 47, 0.3);
+  background: rgba(255, 249, 244, 0.92);
+  outline: none;
+}
+
+.mode-chip--active {
+  border-color: rgba(157, 79, 47, 0.42);
+  background:
+    linear-gradient(180deg, rgba(255, 247, 240, 0.96), rgba(255, 255, 255, 0.92)),
+    rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(157, 79, 47, 0.16);
+}
+
+.section-block {
+  margin-top: 18px;
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  content-visibility: auto;
+  contain-intrinsic-size: 960px;
+}
+
+.section-block__header {
+  margin-bottom: 16px;
+}
+
+.section-block__header h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 2.2vw, 2.4rem);
+}
+
+.section-block__header p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.55;
+}
+
+.section-block--split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+}
+
+.section-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.section-grid--two {
+  grid-template-columns: 0.88fr 1.12fr;
+}
+
+.section-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.comparison-shell,
+.comparison-shell__content,
+.digit-strip-group {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.comparison-shell {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.comparison-shell__header h3 {
+  margin: 0 0 6px;
+  font-size: 1.3rem;
+  overflow-wrap: anywhere;
+}
+
+.comparison-shell__header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.comparison-matrices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  min-width: 0;
+}
+
+.chart-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.56);
+  padding: 20px;
+  min-width: 0;
+}
+
+.chart-card--wide {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.chart-card__header {
+  margin-bottom: 14px;
+}
+
+.chart-card__header h3 {
+  margin: 0 0 4px;
+  font-size: clamp(1.32rem, 1.45vw, 1.64rem);
+  overflow-wrap: anywhere;
+}
+
+.chart-card__header p {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 1px solid rgba(157, 79, 47, 0.24);
+  border-radius: var(--radius-sm);
+  background: rgba(157, 79, 47, 0.12);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background: rgba(157, 79, 47, 0.18);
+}
+
+.method-guide {
+  margin-bottom: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.46);
+  overflow: hidden;
+}
+
+.method-guide__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+}
+
+.method-guide__summary::-webkit-details-marker {
+  display: none;
+}
+
+.method-guide__summary-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.method-guide__summary-copy span,
+.method-guide__summary-action,
+.method-guide__intro,
+.method-guide__step p {
+  color: var(--muted);
+}
+
+.method-guide__summary-action {
+  font-size: 0.86rem;
+  white-space: nowrap;
+}
+
+.method-guide__body {
+  border-top: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.method-guide__intro {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.method-guide__steps {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.method-guide__step strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.method-guide__step p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.method-guide__formula {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(31, 27, 23, 0.05);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.84rem;
+  white-space: pre-wrap;
+}
+
+.section-block--alert {
+  border-color: rgba(177, 99, 79, 0.22);
+  background: rgba(255, 244, 240, 0.84);
+}
+
+.alert-list {
+  display: grid;
+  gap: 12px;
+}
+
+.alert-card {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(177, 99, 79, 0.22);
+  background: rgba(228, 186, 174, 0.28);
+  padding: 14px 16px;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  min-width: 0;
+}
+
+.matrix-cell {
+  min-height: 196px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  min-width: 0;
+}
+
+.matrix-cell--positive {
+  background: linear-gradient(180deg, rgba(195, 213, 174, 0.58), rgba(195, 213, 174, 0.26));
+}
+
+.matrix-cell--negative {
+  background: linear-gradient(180deg, rgba(228, 186, 174, 0.56), rgba(228, 186, 174, 0.24));
+}
+
+.matrix-cell__topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.matrix-cell__digit,
+.matrix-cell__score {
+  font-size: 0.96rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.matrix-cell__count {
+  font-size: clamp(2rem, 2.4vw, 2.5rem);
+  line-height: 1;
+}
+
+.matrix-cell__name {
+  font-size: clamp(1.16rem, 1.2vw, 1.34rem);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.matrix-cell__system {
+  font-size: clamp(1rem, 1vw, 1.08rem);
+  line-height: 1.48;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.quersum-triangle {
+  display: grid;
+  gap: 10px;
+}
+
+.quersum-row {
+  display: grid;
+  gap: 8px;
+}
+
+.quersum-row__label {
+  color: var(--muted);
+  font-size: 0.94rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.quersum-row__cells {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+}
+
+.quersum-cell {
+  width: 100%;
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: rgba(31, 27, 23, 0.06);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.quersum-cell--root {
+  background: linear-gradient(180deg, rgba(191, 152, 84, 0.35), rgba(157, 79, 47, 0.22));
+  color: #3a2416;
+}
+
+.digit-strip {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.digit-strip__label {
+  color: var(--muted);
+  font-size: 0.94rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.digit-strip__values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+
+.digit-strip__cell {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  background: rgba(31, 27, 23, 0.06);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 1.24rem;
+  font-weight: 700;
+}
+
+.digit-strip__cell--accent {
+  background: rgba(157, 79, 47, 0.18);
+}
+
+.energogram-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.energogram-chart--book {
+  min-width: 640px;
+}
+
+.energogram-chart__zone--negative {
+  fill: rgba(228, 186, 174, 0.3);
+}
+
+.energogram-chart__zone--positive {
+  fill: rgba(202, 220, 191, 0.3);
+}
+
+.energogram-chart__grid,
+.energogram-chart__axis {
+  stroke: rgba(34, 29, 25, 0.18);
+  stroke-width: 1;
+}
+
+.energogram-chart__axis {
+  stroke: rgba(70, 58, 48, 0.52);
+  stroke-width: 2.2;
+}
+
+.energogram-chart__line {
+  stroke: var(--accent);
+  stroke-width: 3.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.energogram-chart__line--book {
+  stroke: #d45d4a;
+  stroke-width: 3.6;
+}
+
+.energogram-chart__figure-panel,
+.energogram-chart__panel-border {
+  stroke: rgba(34, 29, 25, 0.26);
+  stroke-width: 1.2;
+}
+
+.energogram-chart__figure-panel--neutral {
+  fill: rgba(222, 233, 217, 0.34);
+}
+
+.energogram-chart__figure-panel--negative {
+  fill: rgba(236, 198, 184, 0.36);
+}
+
+.energogram-chart__figure-panel--positive {
+  fill: rgba(222, 233, 217, 0.34);
+}
+
+.energogram-chart__panel-border {
+  fill: none;
+}
+
+.energogram-chart__silhouette-line {
+  stroke: rgba(44, 39, 35, 0.32);
+  stroke-width: 1.6;
+}
+
+.energogram-chart__row-number,
+.energogram-chart__book-order {
+  fill: var(--muted);
+  color: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 14px;
+}
+
+.energogram-chart__row-number--book {
+  fill: rgba(57, 50, 44, 0.88);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.energogram-chart__book-order {
+  margin: -4px 0 10px;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.energogram-chart__zone-caption,
+.energogram-chart__axis-caption,
+.energogram-chart__house-label,
+.energogram-chart__body-label,
+.energogram-chart__body-subtitle {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.energogram-chart__zone-caption,
+.energogram-chart__axis-caption {
+  fill: rgba(57, 50, 44, 0.74);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.energogram-chart__house-label {
+  fill: rgba(57, 50, 44, 0.94);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.energogram-chart__body-label {
+  fill: rgba(57, 50, 44, 0.9);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.energogram-chart__body-subtitle {
+  fill: rgba(57, 50, 44, 0.54);
+  font-size: 11px;
+}
+
+.table-shell {
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+}
+
+.heat-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1100px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.influence-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 920px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.interzone-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.quick-roll-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.quick-roll-derive-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.root-repeat-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 320px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.inserted-block-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.somatic-primer-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.slice-diagram-book__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.honeycomb-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.biorhythm-build-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.lifetime-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.heat-table th,
+.heat-table td,
+.interzone-table th,
+.interzone-table td,
+.quick-roll-table th,
+.quick-roll-table td,
+.quick-roll-derive-table th,
+.quick-roll-derive-table td,
+.root-repeat-table th,
+.root-repeat-table td,
+.inserted-block-table th,
+.inserted-block-table td,
+.somatic-primer-table th,
+.somatic-primer-table td,
+.slice-diagram-book__table th,
+.slice-diagram-book__table td,
+.honeycomb-table th,
+.honeycomb-table td,
+.biorhythm-build-table th,
+.biorhythm-build-table td,
+.lifetime-table th,
+.lifetime-table td,
+.influence-table th,
+.influence-table td {
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.heat-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+  vertical-align: bottom;
+}
+
+.heat-table__head--highlighted {
+  background: rgba(157, 79, 47, 0.12) !important;
+}
+
+.interzone-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.interzone-reference-table td:first-child,
+.interzone-reference-table td:last-child {
+  text-align: left;
+  vertical-align: top;
+  min-width: 280px;
+}
+
+.interzone-reference-table__direction {
+  width: 140px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.interzone-reference-table__notes {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.interzone-reference-table__notes p {
+  margin: 0;
+}
+
+.quick-roll-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.quick-roll-derive-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.root-repeat-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.inserted-block-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.somatic-primer-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.slice-diagram-book__table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.honeycomb-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.biorhythm-build-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.lifetime-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.influence-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.influence-table th:first-child,
+.influence-table td:first-child,
+.influence-table td:nth-child(2) {
+  text-align: left;
+}
+
+.influence-table__house-id {
+  display: inline-block;
+  margin-right: 8px;
+  color: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.influence-table__house-name {
+  display: inline-block;
+}
+
+.influence-table__delta--improved {
+  color: var(--positive-strong);
+  font-weight: 700;
+}
+
+.influence-table__delta--reduced {
+  color: var(--negative-strong);
+  font-weight: 700;
+}
+
+.influence-table__delta--stable {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.quick-roll-table__head--highlighted {
+  background: rgba(157, 79, 47, 0.12) !important;
+}
+
+.quick-roll-table__row--highlighted th,
+.quick-roll-table__row--highlighted td {
+  background: rgba(191, 152, 84, 0.1);
+}
+
+.inserted-block-table__cell {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92rem;
+}
+
+.inserted-block-table__cell--root {
+  background: rgba(191, 152, 84, 0.16);
+  font-weight: 700;
+}
+
+.inserted-block-table__cell--transition {
+  background: rgba(157, 79, 47, 0.12);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.inserted-block-table__cell--empty {
+  color: var(--muted);
+}
+
+.quick-roll-table__cell--selected {
+  background: rgba(127, 156, 90, 0.18) !important;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.quick-roll-derive-table__head--highlighted {
+  background: rgba(157, 79, 47, 0.12) !important;
+}
+
+.quick-roll-derive-table__cell {
+  min-width: 88px;
+}
+
+.quick-roll-derive-table__cell--highlighted {
+  background: rgba(191, 152, 84, 0.1);
+  font-weight: 700;
+}
+
+.quick-roll-derive-table__cell--selected {
+  background: rgba(127, 156, 90, 0.18) !important;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.quick-roll-derive-table--lookup {
+  margin-top: 16px;
+}
+
+.somatic-primer-table__head--highlighted {
+  background: rgba(157, 79, 47, 0.12) !important;
+}
+
+.somatic-primer-table__cell {
+  min-width: 100px;
+  vertical-align: top;
+}
+
+.somatic-primer-table__cell--highlighted {
+  background: rgba(191, 152, 84, 0.1);
+}
+
+.slice-diagram-book {
+  display: grid;
+  gap: 14px;
+}
+
+.slice-diagram-atlas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.slice-diagram-book__head--highlighted {
+  background: rgba(157, 79, 47, 0.12) !important;
+}
+
+.slice-diagram-book__cell {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.slice-diagram-book__cell--positive {
+  background: rgba(195, 213, 174, 0.3);
+}
+
+.slice-diagram-book__cell--negative {
+  background: rgba(228, 186, 174, 0.22);
+}
+
+.slice-diagram-book__cell--highlighted {
+  box-shadow: inset 0 0 0 2px rgba(157, 79, 47, 0.28);
+}
+
+.slice-diagram-book__polar {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 420px;
+  justify-self: center;
+}
+
+.slice-diagram-book__ring,
+.slice-diagram-book__axis {
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.slice-diagram-book__fill {
+  fill: rgba(216, 118, 138, 0.12);
+}
+
+.somatic-standard-graph {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-width: 1320px;
+}
+
+.somatic-standard-graph__grid,
+.somatic-standard-graph__column {
+  stroke: rgba(63, 43, 25, 0.14);
+  stroke-width: 1;
+}
+
+.somatic-standard-graph__column--label {
+  stroke: rgba(63, 43, 25, 0.1);
+}
+
+.somatic-standard-graph__grid--major {
+  stroke: rgba(63, 43, 25, 0.32);
+  stroke-width: 1.6;
+}
+
+.somatic-standard-graph__negative-zone {
+  fill: rgba(228, 186, 174, 0.22);
+}
+
+.somatic-standard-graph__area--positive {
+  fill: rgba(184, 218, 191, 0.22);
+}
+
+.somatic-standard-graph__area--negative {
+  fill: rgba(228, 186, 174, 0.26);
+}
+
+.somatic-standard-graph__line {
+  stroke: #d45d4a;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.somatic-standard-graph__point {
+  fill: rgba(212, 93, 74, 0.14);
+  stroke: #d45d4a;
+  stroke-width: 2;
+}
+
+.somatic-standard-graph__axis-label,
+.somatic-standard-graph__point-label,
+.somatic-standard-graph__caption {
+  fill: var(--muted);
+  font-size: 15px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.somatic-standard-graph__life-label,
+.somatic-standard-graph__health-label {
+  fill: rgba(63, 43, 25, 0.78);
+  font-size: 17px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.somatic-standard-graph__health-label {
+  fill: rgba(63, 43, 25, 0.46);
+  font-size: 14px;
+}
+
+.somatic-standard-graph__band {
+  stroke: rgba(63, 43, 25, 0.1);
+  stroke-width: 1;
+}
+
+.somatic-standard-graph__band--positive {
+  fill: rgba(255, 255, 255, 0.72);
+}
+
+.somatic-standard-graph__band--negative {
+  fill: rgba(255, 255, 255, 0.76);
+}
+
+.somatic-standard-graph__band-title,
+.somatic-standard-graph__band-description {
+  fill: rgba(63, 43, 25, 0.84);
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.somatic-standard-graph__band-description {
+  fill: rgba(63, 43, 25, 0.56);
+  font-size: 13px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.slice-diagram-book__line {
+  stroke: #d8768a;
+  stroke-width: 3.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.slice-diagram-book__point {
+  fill: #d8768a;
+}
+
+.slice-diagram-book__label {
+  fill: var(--muted);
+  font-size: 13px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.root-repeat-table__ages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.root-repeat-table__age {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.05);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.root-repeat-table__age--highlighted {
+  background: rgba(127, 156, 90, 0.2);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.honeycomb-table td:nth-child(2),
+.honeycomb-table td:nth-child(6) {
+  text-align: left;
+}
+
+.honeycomb-table__formula {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  color: var(--muted);
+}
+
+.biorhythm-build-table__base {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.lifetime-table td:nth-child(4) {
+  text-align: left;
+}
+
+.lifetime-table--book th,
+.lifetime-table--book td {
+  vertical-align: top;
+}
+
+.lifetime-table--book td:nth-child(2),
+.lifetime-table--book td:nth-child(3) {
+  text-align: left;
+}
+
+.lifetime-table__type-cell {
+  min-width: 180px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.lifetime-table__type-cell--especially_unfavorable {
+  background: rgba(177, 99, 79, 0.16);
+}
+
+.lifetime-table__type-cell--unfavorable {
+  background: rgba(228, 186, 174, 0.24);
+}
+
+.lifetime-table__type-cell--challenging {
+  background: rgba(191, 152, 84, 0.16);
+}
+
+.lifetime-table__type-cell--depressive {
+  background: rgba(191, 152, 84, 0.12);
+}
+
+.lifetime-table__type-cell--favorable {
+  background: rgba(195, 213, 174, 0.2);
+}
+
+.lifetime-table__type-cell--especially_favorable {
+  background: rgba(127, 156, 90, 0.18);
+}
+
+.lifetime-table__periods-cell {
+  min-width: 360px;
+}
+
+.lifetime-table__ages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lifetime-table__age-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.06);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.82rem;
+}
+
+.lifetime-table__sota-caption {
+  display: grid;
+  gap: 4px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.lifetime-table__sota-caption span {
+  font-size: 0.78rem;
+}
+
+.lifetime-table__definition-cell {
+  min-width: 220px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.lifetime-table__sign--positive {
+  color: var(--positive-strong);
+  font-weight: 700;
+}
+
+.lifetime-table__sign--negative {
+  color: var(--negative-strong);
+  font-weight: 700;
+}
+
+.heat-table__head-title,
+.heat-table__head-subtitle {
+  display: block;
+}
+
+.heat-table__head-title {
+  font-size: 0.92rem;
+}
+
+.heat-table__head-subtitle {
+  margin-top: 4px;
+  font-size: 0.76rem;
+  line-height: 1.35;
+}
+
+.heat-table__cell {
+  min-width: 66px;
+}
+
+.heat-table__cell--highlighted {
+  box-shadow: inset 0 0 0 2px rgba(157, 79, 47, 0.22);
+}
+
+.heat-table__cell--positive {
+  background: rgba(195, 213, 174, 0.62);
+}
+
+.heat-table__cell--negative {
+  background: rgba(228, 186, 174, 0.62);
+}
+
+.heat-table__digit {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.heat-table__score {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.timeline-chart,
+.polar-chart,
+.somatic-strip-chart,
+.somatic-polar-chart,
+.hourly-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.timeline-chart__grid,
+.polar-chart__ring,
+.polar-chart__axis,
+.somatic-polar-chart__ring,
+.somatic-polar-chart__axis,
+.somatic-strip-chart__grid,
+.hourly-chart__grid {
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.timeline-chart__grid--vertical,
+.somatic-strip-chart__grid--vertical,
+.hourly-chart__grid--vertical {
+  stroke-dasharray: 4 6;
+}
+
+.timeline-chart__fill,
+.polar-chart__fill,
+.somatic-polar-chart__fill {
+  fill: rgba(157, 79, 47, 0.12);
+}
+
+.timeline-chart__line,
+.polar-chart__line,
+.somatic-strip-chart__line,
+.somatic-polar-chart__line,
+.hourly-chart__line {
+  stroke: var(--accent);
+  stroke-width: 3.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.timeline-chart__point,
+.polar-chart__point,
+.somatic-strip-chart__point,
+.somatic-polar-chart__point,
+.hourly-chart__point {
+  fill: var(--accent);
+}
+
+.timeline-chart__xlabel,
+.timeline-chart__ylabel,
+.polar-chart__label,
+.somatic-strip-chart__age-label,
+.somatic-polar-chart__age-label,
+.hourly-chart__xlabel,
+.hourly-chart__ylabel,
+.delta-chart__label,
+.delta-chart__value {
+  fill: var(--muted);
+  font-size: 12px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.somatic-strip-chart__grid--major {
+  stroke: rgba(63, 43, 25, 0.28);
+}
+
+.somatic-strip-chart__line,
+.somatic-polar-chart__line {
+  stroke: #d8768a;
+  stroke-width: 3.1;
+}
+
+.somatic-strip-chart__point,
+.somatic-polar-chart__point {
+  fill: #d8768a;
+}
+
+.delta-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.delta-chart__axis,
+.delta-chart__grid {
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.delta-chart__bar--improved {
+  fill: rgba(127, 156, 90, 0.8);
+}
+
+.delta-chart__bar--reduced {
+  fill: rgba(177, 99, 79, 0.8);
+}
+
+.delta-chart__bar--stable {
+  fill: rgba(191, 152, 84, 0.72);
+}
+
+.interzone-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.interzone-chart__zone--positive {
+  fill: rgba(195, 213, 174, 0.24);
+}
+
+.interzone-chart__zone--negative {
+  fill: rgba(228, 186, 174, 0.24);
+}
+
+.interzone-chart__grid,
+.interzone-chart__axis {
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.interzone-chart__grid--vertical {
+  stroke-dasharray: 3 5;
+}
+
+.interzone-chart__axis {
+  stroke: rgba(157, 79, 47, 0.42);
+  stroke-width: 2;
+}
+
+.interzone-chart__line {
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.interzone-chart__line--up {
+  stroke: var(--positive-strong);
+}
+
+.interzone-chart__line--down {
+  stroke: var(--negative-strong);
+}
+
+.interzone-chart__line--flat {
+  stroke: var(--gold);
+}
+
+.interzone-chart__point {
+  fill: var(--accent);
+}
+
+.interzone-chart__xlabel,
+.interzone-chart__ylabel {
+  fill: var(--muted);
+  font-size: 12px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.interzone-chart--book {
+  min-width: 860px;
+}
+
+.interzone-chart__segment-panel {
+  stroke: rgba(63, 43, 25, 0.08);
+  stroke-width: 1;
+}
+
+.interzone-chart__segment-boundary {
+  stroke: rgba(63, 43, 25, 0.3);
+  stroke-width: 2;
+}
+
+.interzone-chart__line--book {
+  stroke: #c65342;
+}
+
+.interzone-chart__point--book {
+  fill: #c65342;
+}
+
+.interzone-chart__segment-caption,
+.interzone-chart__month-band-label,
+.interzone-chart__crossing-label {
+  fill: var(--ink);
+  font-size: 12px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.interzone-chart__segment-caption--subtle {
+  fill: var(--muted);
+}
+
+.interzone-chart__month-band-label {
+  fill: var(--muted);
+  text-transform: uppercase;
+}
+
+.interzone-chart__crossing {
+  stroke: rgba(198, 83, 66, 0.6);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+}
+
+.interzone-chart__crossing-label-box {
+  fill: rgba(255, 255, 255, 0.88);
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.interzone-book-plate-list {
+  display: grid;
+  gap: 18px;
+}
+
+.interzone-book-plate {
+  display: grid;
+  gap: 14px;
+}
+
+.interzone-chart--annual,
+.interzone-chart--monthly {
+  min-width: 860px;
+}
+
+.interzone-book-plate__annual-highlight {
+  fill: rgba(191, 152, 84, 0.14);
+  stroke: rgba(157, 79, 47, 0.24);
+  stroke-width: 1;
+}
+
+.interzone-book-plate__annual-point {
+  fill: #d8768a;
+  stroke: rgba(255, 255, 255, 0.94);
+  stroke-width: 1.4;
+}
+
+.interzone-book-plate__annual-point--focus {
+  fill: #9d4f2f;
+}
+
+.interzone-book-plate__zone-label {
+  fill: rgba(63, 43, 25, 0.54);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.interzone-book-plate__month-box {
+  fill: rgba(255, 255, 255, 0.92);
+  stroke: rgba(63, 43, 25, 0.14);
+  stroke-width: 1;
+}
+
+.interzone-book-plate__month-number,
+.interzone-book-plate__month-label {
+  fill: rgba(63, 43, 25, 0.82);
+  font-size: 13px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.interzone-book-plate__month-number {
+  fill: rgba(63, 43, 25, 0.52);
+}
+
+.interzone-book-plate__interpretation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.interzone-book-plate__copy {
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.interzone-book-plate__copy strong {
+  display: block;
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.interzone-book-plate__copy p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.interzone-book-plate__copy--positive {
+  background: rgba(195, 213, 174, 0.18);
+}
+
+.interzone-book-plate__copy--negative {
+  background: rgba(228, 186, 174, 0.16);
+}
+
+.inserted-block-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-width: 760px;
+}
+
+.inserted-block-chart__year-panel {
+  stroke: rgba(63, 43, 25, 0.08);
+  stroke-width: 1;
+}
+
+.inserted-block-chart__year-panel--odd {
+  fill: rgba(215, 228, 209, 0.22);
+}
+
+.inserted-block-chart__year-panel--even {
+  fill: rgba(228, 186, 174, 0.16);
+}
+
+.inserted-block-chart__transition-panel {
+  fill: rgba(228, 186, 174, 0.38);
+}
+
+.inserted-block-chart__grid {
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.inserted-block-chart__grid--vertical {
+  stroke-dasharray: 3 4;
+}
+
+.inserted-block-chart__line {
+  stroke: #d45d4a;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.inserted-block-chart__transition-point {
+  fill: rgba(212, 93, 74, 0.2);
+  stroke: #d45d4a;
+  stroke-width: 2.6;
+}
+
+.inserted-block-chart__ylabel,
+.inserted-block-chart__year-label {
+  fill: var(--muted);
+  font-size: 13px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.root-wave-chart,
+.root-polar-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.root-wave-chart__grid,
+.root-polar-chart__ring,
+.root-polar-chart__axis {
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+  fill: none;
+}
+
+.root-wave-chart__grid--vertical {
+  stroke-dasharray: 3 4;
+}
+
+.root-wave-chart__grid--highlighted,
+.root-polar-chart__axis--highlighted {
+  stroke: rgba(157, 79, 47, 0.42);
+  stroke-width: 1.6;
+}
+
+.root-wave-chart__line {
+  stroke: #d45d4a;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.root-wave-chart__point {
+  fill: rgba(212, 93, 74, 0.14);
+  stroke: #d45d4a;
+  stroke-width: 2;
+}
+
+.root-wave-chart__focus {
+  fill: rgba(127, 156, 90, 0.18);
+  stroke: #7f9c5a;
+  stroke-width: 2.4;
+}
+
+.root-wave-chart__xlabel,
+.root-wave-chart__ylabel,
+.root-wave-chart__focus-label,
+.root-polar-chart__age-label,
+.root-polar-chart__digit-label {
+  fill: var(--muted);
+  font-size: 13px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.root-polar-chart__fill {
+  fill: rgba(212, 93, 74, 0.08);
+}
+
+.root-polar-chart__line {
+  stroke: #d45d4a;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.root-polar-chart__point {
+  fill: rgba(212, 93, 74, 0.14);
+  stroke: #d45d4a;
+  stroke-width: 1.8;
+}
+
+.root-polar-chart__point--highlighted {
+  fill: rgba(127, 156, 90, 0.2);
+  stroke: #7f9c5a;
+  stroke-width: 2.2;
+}
+
+.slice-atlas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.slice-atlas-card {
+  width: 100%;
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.1);
+  background: rgba(255, 255, 255, 0.56);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.slice-atlas-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(157, 79, 47, 0.24);
+  box-shadow: 0 16px 30px rgba(44, 27, 17, 0.08);
+}
+
+.slice-atlas-card:focus-visible {
+  outline: 2px solid rgba(157, 79, 47, 0.45);
+  outline-offset: 3px;
+}
+
+.slice-atlas-card--selected {
+  border-color: rgba(157, 79, 47, 0.38);
+  background: linear-gradient(180deg, rgba(157, 79, 47, 0.12), rgba(255, 255, 255, 0.62));
+  box-shadow: 0 18px 30px rgba(157, 79, 47, 0.12);
+}
+
+.slice-atlas-card__header,
+.slice-atlas-card__meta,
+.slice-atlas-card__digits {
+  display: flex;
+  align-items: center;
+}
+
+.slice-atlas-card__header,
+.slice-atlas-card__meta {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.slice-atlas-card__header h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+}
+
+.slice-atlas-card__header p,
+.slice-atlas-card__meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.slice-atlas-card__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(157, 79, 47, 0.14);
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.slice-atlas-card__chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slice-atlas-card__ring,
+.slice-atlas-card__axis {
+  fill: none;
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.slice-atlas-card__axis {
+  stroke-dasharray: 3 5;
+}
+
+.slice-atlas-card__fill {
+  fill: rgba(157, 79, 47, 0.1);
+}
+
+.slice-atlas-card__line {
+  stroke: var(--accent);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.slice-atlas-card__point {
+  fill: var(--accent);
+}
+
+.slice-atlas-card__label {
+  fill: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.slice-atlas-card__digits {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.slice-atlas-card__digit {
+  min-width: 28px;
+  min-height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.slice-atlas-card__digit--positive {
+  background: rgba(195, 213, 174, 0.62);
+}
+
+.slice-atlas-card__digit--negative {
+  background: rgba(228, 186, 174, 0.62);
+}
+
+.arcana-card__formula {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.arcana-card__token {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.06);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.84rem;
+}
+
+.arcana-card__token strong {
+  color: var(--accent);
+}
+
+.arcana-card__result {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  color: var(--muted);
+}
+
+.arcana-card__result strong {
+  color: var(--ink);
+  font-size: 1.12rem;
+}
+
+.lifetime-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-width: 620px;
+}
+
+.lifetime-chart__row-bg {
+  fill: rgba(31, 27, 23, 0.05);
+}
+
+.lifetime-chart__grid {
+  stroke: rgba(63, 43, 25, 0.08);
+  stroke-width: 1;
+}
+
+.lifetime-chart__grid--major {
+  stroke: rgba(63, 43, 25, 0.14);
+}
+
+.lifetime-chart__segment--especially_unfavorable {
+  fill: rgba(122, 36, 36, 0.8);
+}
+
+.lifetime-chart__segment--unfavorable {
+  fill: rgba(177, 99, 79, 0.74);
+}
+
+.lifetime-chart__segment--challenging {
+  fill: rgba(191, 152, 84, 0.72);
+}
+
+.lifetime-chart__segment--depressive {
+  fill: rgba(116, 93, 150, 0.56);
+}
+
+.lifetime-chart__segment--favorable {
+  fill: rgba(127, 156, 90, 0.62);
+}
+
+.lifetime-chart__segment--especially_favorable {
+  fill: rgba(67, 128, 87, 0.82);
+}
+
+.lifetime-chart__segment-label,
+.lifetime-chart__age {
+  fill: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.lifetime-chart__row-label {
+  fill: var(--ink);
+  font-size: 14px;
+}
+
+.lifetime-book-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 2px 0 12px;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.lifetime-book-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lifetime-book-legend__swatch {
+  width: 18px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.lifetime-book-legend__swatch--positive {
+  background: rgba(195, 213, 174, 0.88);
+}
+
+.lifetime-book-legend__swatch--negative {
+  background: rgba(228, 186, 174, 0.9);
+}
+
+.lifetime-book-legend__swatch--resonant {
+  background: rgba(31, 27, 23, 0.72);
+}
+
+.lifetime-chart__book-caption,
+.lifetime-chart__book-max-age {
+  fill: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.lifetime-chart__book-age-cell,
+.lifetime-chart__book-column-frame,
+.lifetime-chart__book-sota-box {
+  fill: rgba(255, 255, 255, 0.7);
+  stroke: rgba(63, 43, 25, 0.18);
+  stroke-width: 1;
+}
+
+.lifetime-chart__book-age-text {
+  fill: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 12px;
+}
+
+.lifetime-chart__book-band--positive {
+  fill: rgba(195, 213, 174, 0.72);
+}
+
+.lifetime-chart__book-band--negative {
+  fill: rgba(228, 186, 174, 0.74);
+}
+
+.lifetime-chart__book-band--resonant {
+  fill: rgba(31, 27, 23, 0.72);
+}
+
+.lifetime-chart__book-sota-label {
+  fill: var(--ink);
+  font-size: 22px;
+}
+
+.honeycomb-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.honeycomb-chart__hex {
+  fill: rgba(255, 255, 255, 0.72);
+  stroke: rgba(63, 43, 25, 0.28);
+  stroke-width: 2.5;
+}
+
+.honeycomb-chart__hex--lifelong {
+  fill: rgba(191, 152, 84, 0.16);
+}
+
+.honeycomb-chart__cell--clickable {
+  cursor: pointer;
+}
+
+.honeycomb-chart__cell--clickable:focus-visible {
+  outline: none;
+}
+
+.honeycomb-chart__cell--clickable .honeycomb-chart__hex {
+  transition: fill 180ms ease, stroke 180ms ease, transform 180ms ease;
+}
+
+.honeycomb-chart__cell--clickable:hover .honeycomb-chart__hex,
+.honeycomb-chart__cell--clickable:focus-visible .honeycomb-chart__hex {
+  fill: rgba(191, 152, 84, 0.22);
+  stroke: rgba(157, 79, 47, 0.42);
+}
+
+.honeycomb-chart__cell--selected .honeycomb-chart__hex {
+  fill: rgba(157, 79, 47, 0.18);
+  stroke: rgba(157, 79, 47, 0.76);
+}
+
+.honeycomb-chart__cell--selected .honeycomb-chart__value {
+  fill: #9d4f2f;
+}
+
+.honeycomb-chart__label,
+.honeycomb-chart__title {
+  fill: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.honeycomb-chart__label {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.honeycomb-chart__title {
+  font-size: 20px;
+}
+
+.honeycomb-chart__value {
+  fill: var(--ink);
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.hourly-chart__zone--high {
+  fill: rgba(195, 213, 174, 0.28);
+}
+
+.hourly-chart__zone--low {
+  fill: rgba(228, 186, 174, 0.26);
+}
+
+.hourly-chart__average {
+  stroke: var(--gold);
+  stroke-width: 2;
+  stroke-dasharray: 8 8;
+}
+
+.hourly-compat-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 2px 0 12px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.hourly-compat-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hourly-compat-legend__swatch {
+  width: 18px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.hourly-compat-legend__swatch--primary-line {
+  background: #175e63;
+}
+
+.hourly-compat-legend__swatch--secondary-line {
+  background: #9d4f2f;
+}
+
+.hourly-compat-legend__swatch--shared-activity {
+  background: rgba(195, 213, 174, 0.82);
+}
+
+.hourly-compat-legend__swatch--shared-passive {
+  background: rgba(228, 186, 174, 0.88);
+}
+
+.hourly-compat-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hourly-compat-chart__zone--shared-activity {
+  fill: rgba(195, 213, 174, 0.2);
+}
+
+.hourly-compat-chart__zone--shared-passive {
+  fill: rgba(228, 186, 174, 0.24);
+}
+
+.hourly-compat-chart__grid {
+  stroke: rgba(63, 43, 25, 0.08);
+  stroke-width: 1;
+}
+
+.hourly-compat-chart__grid--vertical {
+  stroke: rgba(63, 43, 25, 0.05);
+}
+
+.hourly-compat-chart__average {
+  stroke-width: 2;
+  stroke-dasharray: 7 7;
+}
+
+.hourly-compat-chart__average--primary {
+  stroke: rgba(23, 94, 99, 0.72);
+}
+
+.hourly-compat-chart__average--secondary {
+  stroke: rgba(157, 79, 47, 0.68);
+}
+
+.hourly-compat-chart__line {
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hourly-compat-chart__line--primary {
+  stroke: #175e63;
+}
+
+.hourly-compat-chart__line--secondary {
+  stroke: #9d4f2f;
+}
+
+.hourly-compat-chart__point {
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 1.5;
+}
+
+.hourly-compat-chart__point--primary {
+  fill: #175e63;
+}
+
+.hourly-compat-chart__point--secondary {
+  fill: #9d4f2f;
+}
+
+.hourly-compat-chart__xlabel,
+.hourly-compat-chart__ylabel {
+  fill: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.somatic-wheel {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.somatic-wheel__guide,
+.somatic-wheel__divider {
+  fill: none;
+  stroke: rgba(63, 43, 25, 0.12);
+  stroke-width: 1;
+}
+
+.somatic-wheel__sector-bg {
+  fill: rgba(31, 27, 23, 0.05);
+}
+
+.somatic-wheel__sector--positive,
+.somatic-wheel__center--positive {
+  fill: rgba(127, 156, 90, 0.72);
+}
+
+.somatic-wheel__sector--negative,
+.somatic-wheel__center--negative {
+  fill: rgba(177, 99, 79, 0.72);
+}
+
+.somatic-wheel__digit,
+.somatic-wheel__center-kicker,
+.somatic-wheel__center-age,
+.somatic-wheel__label,
+.coverage-card__meta {
+  fill: var(--muted);
+}
+
+.somatic-wheel__digit,
+.somatic-wheel__center-digit {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.somatic-wheel__center-kicker,
+.somatic-wheel__center-age,
+.somatic-wheel__label {
+  font-size: 13px;
+}
+
+.somatic-wheel__center-digit {
+  fill: #fff;
+}
+
+.hour-zone-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.hour-zone {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.hour-zone--passive {
+  background: rgba(228, 186, 174, 0.28);
+}
+
+.hour-zone--normal {
+  background: rgba(191, 152, 84, 0.16);
+}
+
+.hour-zone--overload {
+  background: rgba(195, 213, 174, 0.36);
+}
+
+.hour-zone__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.hour-zone__topline strong {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92rem;
+}
+
+.hour-zone__band {
+  margin-top: 8px;
+  font-size: 0.88rem;
+}
+
+.hour-zone__relation {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.sota-grid,
+.note-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.sota-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.note-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.note-grid--single-column {
+  grid-template-columns: 1fr;
+}
+
+.sota-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 16px;
+}
+
+.sota-card--active {
+  background: linear-gradient(180deg, rgba(157, 79, 47, 0.15), rgba(157, 79, 47, 0.05));
+}
+
+.sota-card--idle {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sota-card__eyebrow,
+.sota-card__meta,
+.sota-card__trigger {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.sota-card h3 {
+  margin: 8px 0 8px;
+  font-size: 1rem;
+}
+
+.sota-card p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.sota-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.sota-card__triggers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.sota-card__trigger {
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(31, 27, 23, 0.06);
+}
+
+.sota-card__trigger--on {
+  color: #fff;
+  background: var(--accent);
+}
+
+.disease-book-board {
+  display: grid;
+  gap: 18px;
+}
+
+.disease-book-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.disease-book-plate {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background:
+    linear-gradient(180deg, rgba(247, 242, 235, 0.9), rgba(255, 255, 255, 0.72)),
+    rgba(255, 255, 255, 0.68);
+}
+
+.disease-book-plate__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: start;
+}
+
+.disease-book-plate__eyebrow,
+.disease-book-plate__meta {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.disease-book-plate__header h3 {
+  margin: 6px 0 0;
+  font-size: 1.05rem;
+}
+
+.disease-book-plate__meta {
+  display: grid;
+  gap: 6px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.disease-book-plate__charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.disease-book-chart-card {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.disease-book-chart-card__title,
+.disease-book-chart-card__caption {
+  text-align: center;
+}
+
+.disease-book-chart-card__title {
+  font-weight: 700;
+}
+
+.disease-book-chart-card__caption {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.disease-book-radar {
+  width: min(100%, 320px);
+  overflow: visible;
+}
+
+.disease-book-radar__ring,
+.disease-book-radar__axis {
+  stroke: rgba(50, 39, 27, 0.28);
+}
+
+.disease-book-radar__ring {
+  fill: none;
+  stroke-width: 1;
+}
+
+.disease-book-radar__axis {
+  stroke-width: 1.2;
+}
+
+.disease-book-radar__threshold {
+  fill: rgba(233, 128, 144, 0.28);
+  stroke: none;
+}
+
+.disease-book-radar__line {
+  stroke: #e86d91;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.disease-book-radar__point {
+  fill: #fff;
+  stroke: #e86d91;
+  stroke-width: 2;
+}
+
+.disease-book-radar__point--colored {
+  fill: #f4a4b8;
+}
+
+.disease-book-radar__point--confirmed {
+  stroke-width: 2.8;
+}
+
+.disease-book-radar__point--excluded {
+  fill: #fff6f1;
+  stroke: #c87b54;
+}
+
+.disease-book-radar__point--mixed {
+  fill: #fff0b8;
+  stroke: #b88a1c;
+}
+
+.disease-book-radar__age-label {
+  fill: rgba(50, 39, 27, 0.72);
+  font-size: 10px;
+}
+
+.disease-book-table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.disease-book-table th,
+.disease-book-table td {
+  border: 1px solid rgba(63, 43, 25, 0.12);
+  padding: 8px 7px;
+  text-align: center;
+}
+
+.disease-book-table thead th {
+  background: rgba(128, 101, 72, 0.08);
+}
+
+.disease-book-table tbody th {
+  min-width: 138px;
+  background: rgba(250, 244, 235, 0.92);
+}
+
+.disease-book-table tbody th span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.disease-book-table__age-cell,
+.disease-book-table__digit-cell {
+  min-width: 54px;
+}
+
+.disease-book-table__age-cell--confirmed {
+  background: rgba(226, 111, 79, 0.14);
+  color: var(--negative-strong);
+  font-weight: 700;
+}
+
+.disease-book-table__age-cell--excluded {
+  background: rgba(128, 170, 116, 0.14);
+  color: #466a37;
+  font-weight: 700;
+}
+
+.disease-book-table__age-cell--mixed {
+  background: rgba(191, 152, 84, 0.2);
+  color: #8c6214;
+  font-weight: 700;
+}
+
+.disease-book-table__house-row td {
+  background: var(--disease-book-house-fill);
+}
+
+.disease-book-table__digit-cell--colored {
+  box-shadow: inset 0 0 0 2px rgba(226, 111, 79, 0.22);
+  font-weight: 700;
+}
+
+.disease-book-table__digit-cell--excluded {
+  color: rgba(58, 79, 45, 0.78);
+}
+
+.disease-book-table__digit-cell--mixed {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.26), rgba(191, 152, 84, 0.26));
+}
+
+.disease-honeycomb-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.disease-honeycomb-table th,
+.disease-honeycomb-table td {
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.disease-honeycomb-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.disease-honeycomb-table td:nth-child(2) {
+  text-align: left;
+}
+
+.disease-honeycomb-table__ages {
+  font-weight: 700;
+}
+
+.disease-honeycomb-table__ages--confirmed {
+  color: var(--positive-strong);
+}
+
+.disease-honeycomb-table__ages--excluded {
+  color: var(--negative-strong);
+}
+
+.disease-honeycomb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.disease-focus-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.disease-focus-card {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.disease-focus-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.disease-focus-card__eyebrow,
+.disease-focus-card__system,
+.disease-focus-card__lines p,
+.disease-focus-card__ages-empty {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.disease-focus-card__header h3 {
+  margin: 6px 0 0;
+  font-size: 1rem;
+}
+
+.disease-focus-card__count {
+  min-width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(157, 79, 47, 0.12);
+  color: var(--accent);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.disease-focus-card__system {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.disease-focus-card__meta {
+  display: grid;
+  gap: 8px;
+}
+
+.disease-focus-card__ages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.disease-focus-card__age-button {
+  border: 1px solid rgba(63, 43, 25, 0.1);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.disease-focus-card__age-button:hover,
+.disease-focus-card__age-button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.36);
+  background: rgba(157, 79, 47, 0.08);
+  outline: none;
+}
+
+.disease-focus-card__sota-button {
+  justify-self: start;
+  border: 1px solid rgba(63, 43, 25, 0.1);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.disease-focus-card__sota-button:hover,
+.disease-focus-card__sota-button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.36);
+  background: rgba(157, 79, 47, 0.08);
+  outline: none;
+}
+
+.disease-focus-card__lines {
+  display: grid;
+  gap: 8px;
+}
+
+.disease-focus-card__lines p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.disease-honeycomb-card {
+  display: grid;
+  gap: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.disease-honeycomb-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: start;
+}
+
+.disease-honeycomb-card__eyebrow,
+.disease-honeycomb-card__meta,
+.disease-honeycomb-card__focus,
+.disease-honeycomb-year__topline span {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.disease-honeycomb-card__header h3 {
+  margin: 6px 0 0;
+  font-size: 1rem;
+}
+
+.disease-honeycomb-card__meta {
+  display: grid;
+  gap: 6px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.disease-honeycomb-card__focus {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.disease-honeycomb-card__years {
+  display: grid;
+  gap: 10px;
+}
+
+.disease-honeycomb-year {
+  display: grid;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+}
+
+.disease-honeycomb-year--active {
+  background: rgba(228, 186, 174, 0.24);
+  border-color: rgba(177, 99, 79, 0.24);
+}
+
+.disease-honeycomb-year--inactive {
+  background: rgba(195, 213, 174, 0.22);
+  border-color: rgba(127, 156, 90, 0.22);
+}
+
+.disease-honeycomb-year__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.disease-honeycomb-year__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.disease-honeycomb-year__balls {
+  display: grid;
+  gap: 12px;
+}
+
+.disease-honeycomb-year__balls--count-1 {
+  grid-template-columns: minmax(0, 220px);
+}
+
+.disease-honeycomb-year__balls--count-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.disease-honeycomb-ball {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  text-align: center;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background:
+    radial-gradient(circle at top, rgba(191, 152, 84, 0.16), transparent 55%),
+    rgba(255, 255, 255, 0.62);
+}
+
+.disease-honeycomb-ball--clickable {
+  width: 100%;
+  cursor: pointer;
+  font: inherit;
+}
+
+.disease-honeycomb-ball--clickable:hover,
+.disease-honeycomb-ball--clickable:focus-visible {
+  border-color: rgba(157, 79, 47, 0.28);
+  background:
+    radial-gradient(circle at top, rgba(191, 152, 84, 0.24), transparent 55%),
+    rgba(255, 255, 255, 0.74);
+  outline: none;
+}
+
+.disease-honeycomb-ball__eyebrow,
+.disease-honeycomb-ball__label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.disease-honeycomb-ball__circle {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(63, 43, 25, 0.12);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: inset 0 -10px 18px rgba(63, 43, 25, 0.06);
+}
+
+.disease-honeycomb-ball__circle span {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.disease-honeycomb-ball--colored {
+  background:
+    radial-gradient(circle at top, rgba(177, 99, 79, 0.24), transparent 55%),
+    rgba(255, 255, 255, 0.7);
+  border-color: rgba(177, 99, 79, 0.22);
+}
+
+.disease-honeycomb-ball--colored .disease-honeycomb-ball__circle {
+  border-color: rgba(177, 99, 79, 0.3);
+  background: rgba(255, 236, 231, 0.96);
+  color: var(--negative-strong);
+}
+
+.disease-arcana-board {
+  display: grid;
+  gap: 18px;
+}
+
+.disease-arcana-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.disease-arcana-card {
+  border: 1px solid rgba(157, 79, 47, 0.14);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 243, 0.96), rgba(250, 239, 229, 0.9)),
+    rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 34px rgba(107, 57, 32, 0.08);
+  padding: 20px 22px;
+}
+
+.disease-arcana-card__header {
+  align-items: flex-start;
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+}
+
+.disease-arcana-card__eyebrow,
+.disease-arcana-card__heading,
+.disease-arcana-card__group p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.disease-arcana-card__header h3 {
+  font-size: 1.2rem;
+  margin: 6px 0 0;
+}
+
+.disease-arcana-card__age-count {
+  align-items: center;
+  background: rgba(157, 79, 47, 0.12);
+  border-radius: 999px;
+  color: #6d321e;
+  display: inline-flex;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 38px;
+  min-width: 38px;
+  padding: 0 12px;
+}
+
+.disease-arcana-card__heading {
+  margin: 14px 0 0;
+}
+
+.disease-arcana-card__focus,
+.disease-arcana-card__reference-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.disease-arcana-card__focus-chip,
+.disease-arcana-card__reference-chip {
+  border-radius: 999px;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+.disease-arcana-card__focus-chip {
+  background: rgba(157, 79, 47, 0.1);
+  color: #7d341a;
+}
+
+.disease-arcana-card__reference {
+  margin-top: 14px;
+}
+
+.disease-arcana-card__reference-title {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.disease-arcana-card__reference-chip {
+  border: 1px solid rgba(157, 79, 47, 0.14);
+  background: rgba(255, 255, 255, 0.68);
+  color: #6d321e;
+}
+
+.disease-arcana-card__flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.disease-arcana-card__flag {
+  border: 1px solid rgba(157, 79, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #7d341a;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+}
+
+.disease-arcana-card__flag--muted {
+  color: var(--muted);
+}
+
+.disease-arcana-card__sota-button {
+  margin-top: 14px;
+  border: 1px solid rgba(157, 79, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: #7d341a;
+  cursor: pointer;
+  font: inherit;
+  padding: 8px 14px;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.disease-arcana-card__sota-button:hover,
+.disease-arcana-card__sota-button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.44);
+  background: rgba(157, 79, 47, 0.12);
+  outline: none;
+}
+
+.disease-arcana-card__sota-button--active {
+  border-color: rgba(157, 79, 47, 0.62);
+  background: rgba(157, 79, 47, 0.18);
+  color: #6d321e;
+}
+
+.disease-arcana-card__groups {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.disease-arcana-card__group {
+  border-top: 1px solid rgba(157, 79, 47, 0.12);
+  padding-top: 12px;
+}
+
+.disease-arcana-card__group strong {
+  color: #6d321e;
+  display: block;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+.disease-arcana-card__group p {
+  margin: 6px 0 0;
+}
+
+.disease-arcana-card__group-button {
+  margin-top: 10px;
+  border: 1px solid rgba(157, 79, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: #7d341a;
+  cursor: pointer;
+  font: inherit;
+  padding: 7px 12px;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.disease-arcana-card__group-button:hover,
+.disease-arcana-card__group-button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.44);
+  background: rgba(157, 79, 47, 0.12);
+  outline: none;
+}
+
+.sota-reference-atlas,
+.sota-reference-atlas__toolbar,
+.sota-reference-systems {
+  display: grid;
+  gap: 14px;
+}
+
+.sota-reference-focus-card {
+  margin-bottom: 2px;
+}
+
+.sota-reference-focus-card__button {
+  justify-self: start;
+  border: 1px solid rgba(157, 79, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: #7d341a;
+  cursor: pointer;
+  font: inherit;
+  padding: 8px 14px;
+}
+
+.sota-reference-focus-card__button:hover,
+.sota-reference-focus-card__button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.44);
+  background: rgba(157, 79, 47, 0.12);
+  outline: none;
+}
+
+.sota-reference-chip-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sota-reference-chip {
+  display: grid;
+  gap: 6px;
+  padding: 14px;
+  text-align: left;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+  cursor: pointer;
+}
+
+.sota-reference-chip span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.sota-reference-chip strong {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.sota-reference-chip--active,
+.sota-reference-chip:hover,
+.sota-reference-chip:focus-visible {
+  border-color: rgba(157, 79, 47, 0.28);
+  background: rgba(157, 79, 47, 0.1);
+  outline: none;
+}
+
+.sota-reference-system-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.sota-reference-system-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.sota-reference-system-card--focused {
+  border-color: rgba(157, 79, 47, 0.32);
+  background:
+    linear-gradient(180deg, rgba(255, 247, 240, 0.96), rgba(255, 238, 226, 0.9)),
+    rgba(255, 255, 255, 0.66);
+  box-shadow: 0 14px 28px rgba(107, 57, 32, 0.08);
+}
+
+.sota-reference-organ-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.sota-reference-organ-chip {
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(31, 27, 23, 0.06);
+  font-size: 0.82rem;
+}
+
+.sota-reference-organ-chip--focused {
+  background: rgba(157, 79, 47, 0.14);
+  color: #7d341a;
+}
+
+.section-block--notes .note-card {
+  min-height: 132px;
+}
+
+.honeycomb-periods {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.honeycomb-period {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.honeycomb-period--positive {
+  background: rgba(195, 213, 174, 0.38);
+}
+
+.honeycomb-period--negative {
+  background: rgba(228, 186, 174, 0.34);
+}
+
+.honeycomb-period strong {
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.98rem;
+}
+
+.honeycomb-period span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.note-card--single {
+  min-height: auto;
+}
+
+.note-card--warning {
+  background: rgba(228, 186, 174, 0.28);
+  border-color: rgba(177, 99, 79, 0.22);
+}
+
+.note-card--action {
+  display: grid;
+  gap: 12px;
+  align-items: start;
+}
+
+.note-card p {
+  margin: 8px 0 0;
+  line-height: 1.55;
+}
+
+.coverage-board,
+.coverage-board__modules,
+.coverage-board__gaps {
+  display: grid;
+  gap: 14px;
+}
+
+.coverage-board__modules {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.coverage-board__gaps {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 14px;
+}
+
+.coverage-card,
+.gap-card {
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.coverage-card--direct {
+  background: rgba(195, 213, 174, 0.32);
+}
+
+.coverage-card--lookup_required {
+  background: rgba(191, 152, 84, 0.18);
+}
+
+.coverage-card--needs_verification,
+.gap-card--high {
+  background: rgba(228, 186, 174, 0.28);
+}
+
+.gap-card--medium {
+  background: rgba(191, 152, 84, 0.14);
+}
+
+.gap-card--low {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.coverage-card__status {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.06);
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.coverage-card h3,
+.gap-card strong {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.coverage-card p,
+.gap-card p {
+  margin: 0;
+  line-height: 1.55;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.coverage-card__meta {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.78rem;
+}
+
+.reference-board,
+.window-list,
+.child-sleep-list,
+.circadian-note-list,
+.arcana-atlas,
+.arcana-chip-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.reference-board {
+  margin-top: 18px;
+}
+
+.arcana-atlas__toolbar {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.arcana-atlas__controls {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+  gap: 14px;
+}
+
+.arcana-atlas__select {
+  display: grid;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+.arcana-atlas__select select,
+.arcana-atlas__search input {
+  width: 100%;
+  border: 1px solid rgba(63, 43, 25, 0.14);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.84);
+  padding: 12px 14px;
+  color: var(--ink);
+}
+
+.arcana-atlas__search {
+  display: grid;
+  gap: 8px;
+  font-size: 0.92rem;
+}
+
+.arcana-atlas__search-hint {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.arcana-atlas__quick-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.arcana-atlas__quick-filter {
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  padding: 8px 12px;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+}
+
+.arcana-atlas__quick-filter--active {
+  border-color: rgba(157, 79, 47, 0.32);
+  background: rgba(157, 79, 47, 0.12);
+  color: #6d321e;
+}
+
+.arcana-chip-grid {
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
+}
+
+.arcana-chip {
+  width: 100%;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.58);
+  text-align: left;
+  cursor: pointer;
+}
+
+.arcana-chip span {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+.arcana-chip strong {
+  font-size: 0.9rem;
+}
+
+.arcana-chip--active {
+  border-color: rgba(157, 79, 47, 0.28);
+  background: linear-gradient(180deg, rgba(157, 79, 47, 0.14), rgba(255, 255, 255, 0.7));
+}
+
+.arcana-search-board,
+.arcana-search-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.arcana-search-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.arcana-search-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.58);
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.arcana-search-card--active {
+  border-color: rgba(157, 79, 47, 0.28);
+  background: linear-gradient(180deg, rgba(157, 79, 47, 0.14), rgba(255, 255, 255, 0.7));
+}
+
+.arcana-search-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.arcana-search-card__header strong {
+  font-size: 0.98rem;
+}
+
+.arcana-search-card__header span,
+.arcana-search-match-label {
+  color: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.arcana-search-card__list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.arcana-search-card__list li + li {
+  margin-top: 8px;
+}
+
+.arcana-search-card__list span {
+  display: inline-block;
+  margin-right: 8px;
+  color: #6d321e;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.76rem;
+}
+
+.arcana-focus-card {
+  margin-bottom: 2px;
+}
+
+.arcana-focus-card__button {
+  justify-self: start;
+  border: 1px solid rgba(157, 79, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: #7d341a;
+  cursor: pointer;
+  font: inherit;
+  padding: 8px 14px;
+}
+
+.arcana-focus-card__button:hover,
+.arcana-focus-card__button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.44);
+  background: rgba(157, 79, 47, 0.12);
+  outline: none;
+}
+
+.manifestation-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.manifestation-chip {
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.06);
+  font-size: 0.82rem;
+  padding: 6px 10px;
+}
+
+.manifestation-chip--focus {
+  background: rgba(157, 79, 47, 0.14);
+  color: #7d341a;
+}
+
+.manifestation-note {
+  margin-top: 14px;
+}
+
+.arcana-link-button {
+  border: 1px solid rgba(157, 79, 47, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #9d4f2f;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.arcana-link-button:hover,
+.arcana-link-button:focus-visible {
+  border-color: rgba(157, 79, 47, 0.46);
+  background: rgba(157, 79, 47, 0.12);
+  outline: none;
+}
+
+.arcana-link-button--inline {
+  padding: 3px 10px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.arcana-link-button--cell {
+  min-width: 44px;
+  padding: 6px 10px;
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.arcana-link-button--selected {
+  border-color: rgba(157, 79, 47, 0.62);
+  background: rgba(157, 79, 47, 0.18);
+  color: #6d321e;
+}
+
+.manifestation-list-shell {
+  margin-top: 16px;
+}
+
+.manifestation-list-shell strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.manifestation-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.manifestation-list li + li {
+  margin-top: 8px;
+}
+
+.window-list {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.window-card,
+.child-sleep-card,
+.circadian-note {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.window-card--sleep {
+  background: rgba(228, 186, 174, 0.24);
+}
+
+.window-card--activity {
+  background: rgba(195, 213, 174, 0.28);
+}
+
+.window-card strong,
+.child-sleep-card strong,
+.circadian-note strong,
+.reference-list strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.window-card p,
+.child-sleep-card p,
+.circadian-note p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.sleep-need-chart {
+  min-height: 420px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.sleep-need-chart__item {
+  display: grid;
+  gap: 12px;
+  align-items: end;
+}
+
+.sleep-need-chart__bar-shell {
+  height: 290px;
+  display: flex;
+  align-items: end;
+}
+
+.sleep-need-chart__bar {
+  position: relative;
+  width: 100%;
+  min-height: 70px;
+  display: grid;
+  place-items: start center;
+  padding: 14px 10px;
+  border-radius: 18px 18px 10px 10px;
+  background: linear-gradient(180deg, rgba(210, 224, 238, 0.94), rgba(188, 203, 219, 0.9));
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  box-shadow: inset 0 -12px 24px rgba(63, 43, 25, 0.08);
+}
+
+.sleep-need-chart__bar strong {
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.sleep-need-chart__min-line {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(31, 27, 23, 0.32);
+}
+
+.sleep-need-chart__caption {
+  display: grid;
+  gap: 4px;
+  text-align: center;
+}
+
+.sleep-need-chart__caption strong {
+  font-size: 0.92rem;
+}
+
+.sleep-need-chart__caption span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.sleep-cycle-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.sleep-cycle-table th,
+.sleep-cycle-table td {
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.sleep-cycle-table thead th {
+  background: rgba(31, 27, 23, 0.05);
+}
+
+.sleep-cycle-table td:first-child,
+.sleep-cycle-table th:first-child {
+  text-align: left;
+}
+
+.child-sleep-list {
+  margin-top: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.reference-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.reference-list {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(63, 43, 25, 0.08);
+  background: rgba(255, 255, 255, 0.52);
+  padding: 14px;
+}
+
+.reference-list ol,
+.reference-list ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.reference-list li + li {
+  margin-top: 8px;
+}
+
+.circadian-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.circadian-chart__baseline,
+.circadian-chart__guide {
+  stroke: rgba(63, 43, 25, 0.18);
+  stroke-width: 2;
+}
+
+.circadian-chart__guide {
+  stroke-dasharray: 4 6;
+}
+
+.circadian-chart__point {
+  fill: var(--accent);
+}
+
+.circadian-chart__time,
+.circadian-chart__title {
+  fill: var(--muted);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 13px;
+}
+
+.circadian-chart__title {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 15px;
+}
+
+.circadian-note-list {
+  margin-top: 14px;
+}
+
+@media (max-width: 1360px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .control-group,
+  .control-group--three,
+  .control-group--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero,
+  .section-block--split,
+  .section-grid--two,
+  .section-grid--three,
+  .comparison-matrices,
+  .slice-atlas,
+  .sota-grid,
+  .disease-focus-board,
+  .disease-arcana-grid,
+  .disease-honeycomb-grid,
+  .sota-reference-chip-grid,
+  .note-grid,
+  .honeycomb-periods,
+  .coverage-board__modules,
+  .coverage-board__gaps {
+    grid-template-columns: 1fr;
+  }
+
+  .control-group,
+  .control-group--three,
+  .control-group--four,
+  .control-group--wide {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sleep-need-chart,
+  .reference-columns,
+  .window-list,
+  .child-sleep-list,
+  .arcana-search-grid,
+  .arcana-atlas__controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1450px) {
+  .section-grid--paired {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    width: min(100vw - 20px, 1500px);
+    padding-top: 16px;
+  }
+
+  .hero,
+  .control-panel,
+  .section-block {
+    padding: 16px;
+  }
+
+  .control-group,
+  .control-group--three,
+  .control-group--four,
+  .control-group--wide,
+  .hero__metrics,
+  .matrix-grid,
+  .digit-strip__values,
+  .hour-zone-grid,
+  .disease-focus-board,
+  .disease-arcana-grid,
+  .disease-honeycomb-grid,
+  .sota-reference-chip-grid,
+  .honeycomb-periods,
+  .sleep-need-chart,
+  .arcana-search-grid,
+  .arcana-atlas__controls {
+    grid-template-columns: 1fr;
+  }
+
+  .sleep-need-chart {
+    min-height: auto;
+  }
+
+  .sleep-need-chart__bar-shell {
+    height: 180px;
+  }
+}
