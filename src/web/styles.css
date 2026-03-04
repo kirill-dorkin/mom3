@@ -17,6 +17,8 @@
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
+  --font-ui: "Atkinson Hyperlegible", "Aptos", "Segoe UI", "Trebuchet MS", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 * {
@@ -40,10 +42,11 @@ body {
     radial-gradient(circle at top left, rgba(191, 152, 84, 0.22), transparent 22rem),
     radial-gradient(circle at top right, rgba(157, 79, 47, 0.16), transparent 24rem),
     linear-gradient(180deg, #f4ecdd 0%, #ece0cb 100%);
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: var(--font-ui);
   font-weight: 800;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 input,
@@ -3993,12 +3996,12 @@ td {
 .circadian-chart__time,
 .circadian-chart__title {
   fill: var(--muted);
-  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
 }
 
 .circadian-chart__title {
-  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-family: var(--font-ui);
   font-size: 15px;
 }
 
