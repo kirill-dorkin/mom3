@@ -197,7 +197,7 @@ export function FocusedBookPage() {
             <SectionShell
               index="02"
               title="Квадрат состояния здоровья на момент рождения"
-              description="Из QuersumTriangle строится простой книжный квадрат 3x3. В клетке остаётся только балл, номер и число повторов."
+              description="Здесь теперь два отдельных квадрата 3x3: баллы при рождении и количество цифр по тем же ячейкам."
             >
               <BirthHealthSquare counts={personalState.data.matrixCounts} scores={personalState.data.matrixScores} />
             </SectionShell>
@@ -208,7 +208,7 @@ export function FocusedBookPage() {
                   <p className="text-sm font-bold uppercase tracking-[0.34em] text-stone-500">03</p>
                   <h2 className="mt-2 text-3xl font-bold tracking-tight text-stone-950 sm:text-[2.5rem]">Личная энергограмма</h2>
                   <p className="mx-auto mt-3 max-w-3xl text-lg font-semibold leading-8 text-stone-600">
-                    Слева стоит книжный порядок домов, справа простой порядок 1..9, а сверху шкала от -4 до 4.
+                    Слева стоит книжный порядок домов, справа простой порядок 1..9, а силуэт человека берётся из изображения книги.
                   </p>
                 </div>
                 <div className="mt-8 flex w-full justify-center overflow-x-auto pb-2">
