@@ -1,31 +1,27 @@
 interface QuersumTriangleProps {
+  birthDate?: string;
   rows: number[][];
   rootDigit: number;
 }
 
-export function QuersumTriangle({ rows, rootDigit }: QuersumTriangleProps) {
+export function QuersumTriangle({ birthDate, rows, rootDigit }: QuersumTriangleProps) {
   return (
     <div
-      className="mx-auto flex w-full min-w-[42rem] max-w-5xl flex-col items-center gap-4 rounded-[2rem] border border-stone-300/70 bg-[#fffaf1]/90 px-6 py-8 shadow-[0_18px_50px_rgba(44,27,17,0.12)]"
+      className="mx-auto flex w-full min-w-[34rem] max-w-3xl flex-col items-center gap-4 rounded-[1.4rem] border border-stone-300 bg-white px-8 py-8 shadow-[0_16px_30px_rgba(44,27,17,0.08)]"
       role="img"
       aria-label={`Кверсум-треугольник, корневая цифра ${rootDigit}`}
     >
-      <div className="text-center">
-        <p className="text-sm font-black uppercase tracking-[0.28em] text-stone-500">QuersumTriangle</p>
-        <p className="mt-2 text-lg font-bold text-stone-600">Книжная кверсум-свёртка от даты к корню</p>
-      </div>
+      {birthDate ? <div className="w-full text-center text-[2.15rem] font-bold tracking-[0.06em] text-stone-900">{birthDate}</div> : null}
       <div className="flex w-full flex-col items-center gap-3">
         {rows.map((row, rowIndex) => (
           <div className="flex w-full justify-center" key={`row-${rowIndex}`}>
             <div className="flex items-center justify-center gap-3">
               {row.map((digit, digitIndex) => (
                 <span
-                  className={`flex h-16 w-16 items-center justify-center rounded-[1.35rem] border text-3xl font-black shadow-sm transition-transform duration-200 ${
+                  className={`flex h-14 w-14 items-center justify-center rounded-sm border border-transparent text-[2.1rem] font-bold leading-none text-stone-900 ${
                     rowIndex === rows.length - 1
-                      ? "border-stone-500 bg-stone-900 text-[#fffaf1] shadow-[0_16px_24px_rgba(31,27,23,0.18)]"
-                      : rowIndex === 0
-                        ? "border-[#c57f5d]/40 bg-[#f4ddcf] text-stone-900"
-                        : "border-stone-300/80 bg-[#f8f3eb] text-stone-800"
+                      ? "border-stone-400 bg-stone-100"
+                      : "bg-white"
                   }`}
                   key={`digit-${rowIndex}-${digitIndex}`}
                 >
