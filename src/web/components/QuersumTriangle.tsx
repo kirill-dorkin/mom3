@@ -7,7 +7,7 @@ interface QuersumTriangleProps {
 export function QuersumTriangle({ birthDate, rows, rootDigit }: QuersumTriangleProps) {
   return (
     <div
-      className="mx-auto flex w-full min-w-[34rem] max-w-3xl flex-col items-center gap-4 rounded-[1.4rem] border border-stone-300 bg-white px-8 py-8 shadow-[0_16px_30px_rgba(44,27,17,0.08)]"
+      className="mx-auto flex w-full min-w-[34rem] max-w-3xl flex-col items-center gap-4 bg-white px-8 py-4"
       role="img"
       aria-label={`Кверсум-треугольник, корневая цифра ${rootDigit}`}
     >
@@ -18,11 +18,7 @@ export function QuersumTriangle({ birthDate, rows, rootDigit }: QuersumTriangleP
             <div className="flex items-center justify-center gap-3">
               {row.map((digit, digitIndex) => (
                 <span
-                  className={`flex h-14 w-14 items-center justify-center rounded-sm border border-transparent text-[2.1rem] font-bold leading-none text-stone-900 ${
-                    rowIndex === rows.length - 1
-                      ? "border-stone-400 bg-stone-100"
-                      : "bg-white"
-                  }`}
+                  className="flex h-14 w-14 items-center justify-center bg-white text-[2.1rem] font-bold leading-none text-stone-900"
                   key={`digit-${rowIndex}-${digitIndex}`}
                 >
                   {digit}
