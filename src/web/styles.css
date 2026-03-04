@@ -656,7 +656,7 @@ td {
 }
 
 .energogram-chart--book {
-  min-width: 920px;
+  min-width: 1080px;
 }
 
 .energogram-chart__zone--negative {
@@ -708,6 +708,10 @@ td {
   fill: rgba(222, 233, 217, 0.34);
 }
 
+.energogram-chart__house-column {
+  fill: rgba(216, 220, 211, 0.5);
+}
+
 .energogram-chart__panel-border {
   fill: none;
 }
@@ -755,20 +759,20 @@ td {
 
 .energogram-chart__house-label {
   fill: rgba(57, 50, 44, 0.94);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 800;
 }
 
 .energogram-chart__body-label {
   fill: rgba(57, 50, 44, 0.96);
-  font-size: 18px;
-  letter-spacing: 0.03em;
+  font-size: 16px;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .energogram-chart__body-subtitle {
   fill: rgba(57, 50, 44, 0.76);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .table-shell {

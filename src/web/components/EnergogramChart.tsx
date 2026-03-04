@@ -133,12 +133,12 @@ function panelClassName(tone: FigurePanel["tone"]): string {
 }
 
 export const EnergogramChart = memo(function EnergogramChart({ projection, title, subtitle, variant = "personal" }: EnergogramChartProps) {
-  const width = 980;
+  const width = 1120;
   const height = 820;
   const topPadding = 92;
   const bottomPadding = 48;
-  const leftLabelWidth = 56;
-  const rightScaleWidth = 260;
+  const houseColumnWidth = 84;
+  const rightScaleWidth = 320;
   const figureGap = 16;
   const plotWidth = variant === "paired" ? 420 : 460;
   const figurePanels: FigurePanel[] =
@@ -148,7 +148,8 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
           { x: 110, width: 92, tone: "positive" }
         ]
       : [{ x: 18, width: 128, tone: "neutral" }];
-  const plotLeft = figurePanels[figurePanels.length - 1].x + figurePanels[figurePanels.length - 1].width + figureGap;
+  const houseColumnLeft = figurePanels[figurePanels.length - 1].x + figurePanels[figurePanels.length - 1].width + figureGap;
+  const plotLeft = houseColumnLeft + houseColumnWidth;
   const plotRight = plotLeft + plotWidth;
   const plotHeight = height - topPadding - bottomPadding;
   const rowHeight = plotHeight / projection.points.length;
@@ -162,6 +163,8 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
   const positiveCenterX = (zeroX + plotRight) / 2;
   const chartLeft = figurePanels[0].x;
   const chartRight = plotRight + rightScaleWidth;
+  const houseColumnCenterX = houseColumnLeft + houseColumnWidth / 2;
+  const labelColumnCenterX = plotRight + rightScaleWidth / 2;
 
   return (
     <div className="chart-card chart-card--wide">
@@ -183,6 +186,7 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
             <HumanSilhouette x={panel.x + panel.width * 0.08} y={topPadding + 4} width={panel.width * 0.84} height={plotHeight - 8} />
           </g>
         ))}
+        <rect className="energogram-chart__house-column" x={houseColumnLeft} y={topPadding} width={houseColumnWidth} height={plotHeight} />
         <rect className="energogram-chart__zone energogram-chart__zone--negative" x={plotLeft} y={topPadding} width={zeroX - plotLeft} height={plotHeight} />
         <rect className="energogram-chart__zone energogram-chart__zone--positive" x={zeroX} y={topPadding} width={plotRight - zeroX} height={plotHeight} />
         {rowBoundaries.map((y) => (
@@ -194,6 +198,7 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
         {figurePanels.map((panel) => (
           <rect className="energogram-chart__panel-border" key={`figure-border-${panel.x}`} x={panel.x} y={topPadding} width={panel.width} height={plotHeight} />
         ))}
+        <rect className="energogram-chart__panel-border" x={houseColumnLeft} y={topPadding} width={houseColumnWidth} height={plotHeight} />
         <rect className="energogram-chart__panel-border" x={plotLeft} y={topPadding} width={plotWidth} height={plotHeight} />
         <line className="energogram-chart__axis" x1={zeroX} y1={topPadding} x2={zeroX} y2={topPadding + plotHeight} />
         <polyline className="energogram-chart__line energogram-chart__line--book" fill="none" points={path} />
@@ -201,33 +206,33 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
           const y = yForRowCenter(point.rowIndex);
           const rowTop = topPadding + rowHeight * point.rowIndex;
           const rowBottom = rowTop + rowHeight;
-          const houseNameLines = splitIntoLines(point.houseName, 14);
-          const bodySystemLines = splitIntoLines(point.bodySystem, 18);
-          const houseLineHeight = 20;
-          const bodyLineHeight = 17;
-          const blockGap = 8;
+          const houseNameLines = splitIntoLines(point.houseName, 24);
+          const bodySystemLines = splitIntoLines(point.bodySystem, 28);
+          const houseLineHeight = 18;
+          const bodyLineHeight = 15;
+          const blockGap = 6;
           const houseBlockHeight = houseNameLines.length * houseLineHeight;
           const bodyBlockHeight = bodySystemLines.length * bodyLineHeight;
           const totalBlockHeight = houseBlockHeight + bodyBlockHeight + blockGap;
-          const blockTop = Math.max(rowTop + 10, y - totalBlockHeight / 2 + 8);
+          const blockTop = Math.max(rowTop + 10, y - totalBlockHeight / 2 + 6);
           const houseLabelY = blockTop;
-          const bodyLabelY = Math.min(rowBottom - bodyBlockHeight - 8, blockTop + houseBlockHeight + blockGap);
+          const bodyLabelY = Math.min(rowBottom - bodyBlockHeight - 10, blockTop + houseBlockHeight + blockGap);
 
           return (
             <g key={`row-label-${point.houseId}`}>
-              <text className="energogram-chart__house-label" x={plotLeft - leftLabelWidth} y={y + 4} textAnchor="middle">
+              <text className="energogram-chart__house-label" x={houseColumnCenterX} y={y + 4} textAnchor="middle">
                 {point.houseId}
               </text>
-              <text className="energogram-chart__body-label" x={plotRight + rightScaleWidth / 2} y={houseLabelY} textAnchor="middle">
+              <text className="energogram-chart__body-label" x={labelColumnCenterX} y={houseLabelY} textAnchor="middle">
                 {houseNameLines.map((line, index) => (
-                  <tspan key={`${point.houseId}-house-${index}`} x={plotRight + rightScaleWidth / 2} dy={index === 0 ? 0 : houseLineHeight}>
+                  <tspan key={`${point.houseId}-house-${index}`} x={labelColumnCenterX} dy={index === 0 ? 0 : houseLineHeight}>
                     {line}
                   </tspan>
                 ))}
               </text>
-              <text className="energogram-chart__body-subtitle" x={plotRight + rightScaleWidth / 2} y={bodyLabelY} textAnchor="middle">
+              <text className="energogram-chart__body-subtitle" x={labelColumnCenterX} y={bodyLabelY} textAnchor="middle">
                 {bodySystemLines.map((line, index) => (
-                  <tspan key={`${point.houseId}-system-${index}`} x={plotRight + rightScaleWidth / 2} dy={index === 0 ? 0 : bodyLineHeight}>
+                  <tspan key={`${point.houseId}-system-${index}`} x={labelColumnCenterX} dy={index === 0 ? 0 : bodyLineHeight}>
                     {line}
                   </tspan>
                 ))}
@@ -235,10 +240,10 @@ export const EnergogramChart = memo(function EnergogramChart({ projection, title
             </g>
           );
         })}
-        <text className="energogram-chart__axis-caption" x={plotLeft - leftLabelWidth} y={topPadding - 18} textAnchor="middle">
+        <text className="energogram-chart__axis-caption" x={houseColumnCenterX} y={topPadding - 18} textAnchor="middle">
           дом
         </text>
-        <text className="energogram-chart__axis-caption" x={plotRight + rightScaleWidth / 2} y={topPadding - 18} textAnchor="middle">
+        <text className="energogram-chart__axis-caption" x={labelColumnCenterX} y={topPadding - 18} textAnchor="middle">
           область
         </text>
       </svg>
