@@ -6,18 +6,16 @@ interface BirthHealthSquareProps {
 }
 
 interface SquarePanelProps {
-  title: string;
   values: number[][];
   formatValue: (value: number) => string;
 }
 
-function SquarePanel({ title, values, formatValue }: SquarePanelProps) {
+function SquarePanel({ values, formatValue }: SquarePanelProps) {
   const houseByDigit = new Map(knowledgeBase.houses.map((house) => [house.matrixDigit, house]));
 
   return (
-    <section className="flex flex-col items-center gap-4">
-      <h3 className="text-center text-[1.55rem] font-bold tracking-[0.02em] text-stone-950">{title}</h3>
-      <div className="grid min-w-[28rem] grid-cols-3 border border-stone-900 bg-white">
+    <section className="w-full">
+      <div className="grid w-full grid-cols-3 border-[1.5px] border-stone-900 bg-white">
         {values.map((row, rowIndex) =>
           row.map((value, colIndex) => {
             const cellNumber = knowledgeBase.personalMatrixLayout.layout[rowIndex][colIndex];
@@ -25,19 +23,19 @@ function SquarePanel({ title, values, formatValue }: SquarePanelProps) {
 
             return (
               <div
-                className="relative flex aspect-square min-h-[11rem] flex-col border border-stone-900 px-3 py-3 text-stone-950"
-                key={`${title}-${rowIndex}-${colIndex}`}
+                className="relative grid aspect-square min-h-[9.5rem] grid-rows-[auto_1fr_auto] border border-stone-900 bg-white px-2 py-2 pb-7 text-stone-950 sm:min-h-[10.5rem] md:min-h-[8.75rem] lg:min-h-[10.25rem] xl:min-h-[11.5rem]"
+                key={`${rowIndex}-${colIndex}`}
               >
-                <span className="text-center text-[0.92rem] font-bold leading-tight text-stone-700">
+                <span className="block w-full break-words text-center text-[clamp(1rem,1.22vw,1.3rem)] font-black leading-[1.06] tracking-[0.01em] text-stone-950 [overflow-wrap:anywhere]">
                   {house?.bodySystem ?? ""}
                 </span>
-                <span className="mt-auto mb-auto self-center text-[2.35rem] font-bold leading-none">
+                <span className="place-self-center text-center text-[clamp(1.95rem,3.35vw,2.75rem)] font-black leading-none">
                   {formatValue(value)}
                 </span>
-                <span className="text-center text-[0.92rem] font-bold leading-tight text-stone-700">
+                <span className="block w-full break-words text-center text-[clamp(1rem,1.22vw,1.3rem)] font-black leading-[1.06] tracking-[0.01em] text-stone-950 [overflow-wrap:anywhere]">
                   {house?.name ?? ""}
                 </span>
-                <span className="absolute bottom-1.5 right-2 text-sm font-bold text-stone-600">{cellNumber}</span>
+                <span className="absolute bottom-1.5 right-1.5 text-base font-black leading-none text-stone-900">{cellNumber}</span>
               </div>
             );
           })
@@ -49,15 +47,17 @@ function SquarePanel({ title, values, formatValue }: SquarePanelProps) {
 
 export function BirthHealthSquare({ counts, scores }: BirthHealthSquareProps) {
   return (
-    <div className="mx-auto flex min-w-[58rem] flex-wrap items-start justify-center gap-10">
-      <SquarePanel
-        values={scores}
-        formatValue={(value) => (value > 0 ? `+${value}` : `${value}`)}
-      />
-      <SquarePanel
-        values={counts}
-        formatValue={(value) => `${value}`}
-      />
+    <div className="mx-auto w-full max-w-[96rem] px-3 sm:px-4">
+      <div className="grid w-full grid-cols-1 gap-6 pb-2 md:grid-cols-2 md:gap-8 lg:gap-10">
+        <SquarePanel
+          values={scores}
+          formatValue={(value) => (value > 0 ? `+${value}` : `${value}`)}
+        />
+        <SquarePanel
+          values={counts}
+          formatValue={(value) => `${value}`}
+        />
+      </div>
     </div>
   );
 }
