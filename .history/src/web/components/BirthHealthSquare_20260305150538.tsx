@@ -55,6 +55,7 @@ export function BirthHealthSquare({ counts, scores }: BirthHealthSquareProps) {
         formatValue={(value) => (value > 0 ? `+${value}` : `${value}`)}
       />
       <SquarePanel
+        title="Количество цифр"
         values={counts}
         formatValue={(value) => `${value}`}
       />

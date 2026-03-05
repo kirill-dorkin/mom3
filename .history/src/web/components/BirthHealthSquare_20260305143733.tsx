@@ -51,10 +51,12 @@ export function BirthHealthSquare({ counts, scores }: BirthHealthSquareProps) {
   return (
     <div className="mx-auto flex min-w-[58rem] flex-wrap items-start justify-center gap-10">
       <SquarePanel
+        title="Баллы при рождении"
         values={scores}
         formatValue={(value) => (value > 0 ? `+${value}` : `${value}`)}
       />
       <SquarePanel
+        title="Количество цифр"
         values={counts}
         formatValue={(value) => `${value}`}
       />
